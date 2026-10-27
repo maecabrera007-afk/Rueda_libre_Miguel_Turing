@@ -1,0 +1,209 @@
+protocolo:  | host: | puerto: | ruta:/home/cohorte8/Documents/Grupo_Tarde/Rueda_libre/paginas/index.html | cod_status: 200 | metodo_peticion: | 
+
+
+
+# Bitácora de Desarrollo - Proyecto Rueda Libre
+
+## 1. Registro de Petición HTTP 
+*   **URL completa:** http://127.0.0.1:5500/paginas/index.html
+*   **Protocolo:** http://
+*   **Host:** 127.0.0.1 
+*   **Puerto:** 5500 
+*   **Ruta:** /paginas/index.html
+*   **Método de la petición:** GET
+*   **Código de estado:** 200 OK
+
+---
+
+## 2. Prueba de Ruta Inexistente
+*   **Ruta probada:** `/lista_de_precios.html`
+*   **Código de estado del servidor:** 404 Not Found
+*   **Significado:** Significa que el servidor web está funcionando correctamente y recibió la solicitud, pero no pudo encontrar el archivo o recurso específico en esa dirección porque no existe o fue movido.
+
+---
+
+## 3. Roles de las Tecnologías en Rueda Libre
+
+### HTML 
+*   **Rol:** Define el esqueleto, la organización jerárquica y el contenido del sitio web.
+*   **Ejemplo :** Creación del menú de navegación con etiquetas <nav> y los enlaces de las secciones, o la estructura de la ficha técnica de una bicicleta usando <ul> y <li>.
+
+### CSS 
+*   **Rol:** Aplica el diseño visual, los estilos, colores, tipografías y la adaptabilidad a pantallas móviles .
+*   **Ejemplo concreto:** Definir que el fondo del sitio sea negro, que los botones de compra tengan esquinas redondeadas y cambien a color verde brillante cuando el usuario pasa el cursor por encima.
+
+### JavaScript 
+*   **Rol:** Aporta comportamiento dinámico, lógica del lado del cliente y maneja las interacciones del usuario en tiempo real.
+*   **Ejemplo concreto:** Programar un cotizador dinámico donde el usuario elige el tipo de bicicleta y los días de renta, calculando el precio total instantáneamente en pantalla sin recargar la página.
+
+---
+
+## 4. Control de Versiones 
+
+Para realizar tu primer commit y subirlo a GitHub, ejecuta los siguientes comandos en tu terminal:
+
+# 1. Inicializar el repositorio 
+git init
+
+# 2. Agregar los archivos 
+git add .
+
+# 3. Hacer el primer commit con un mensaje descriptivo
+git commit -m "feat: Mensaje xd "
+
+# 4. Vincular tu repositorio local con tu repositorio remoto en GitHub
+# git remote add origin https://github.com
+
+# 5. Cambiar a la rama principal (main) y subir los cambios
+git branch -M main
+git push -u origin main
+
+
+## 5. Rutas que se usaron dentro el ultimo mini reto
+
+
+Las tres páginas están en la misma carpeta, por eso la ruta es solo el nombre del archivo.
+
+| # | Archivo de origen | Destino | Ruta escrita |
+|---|---|---|---|
+| 1 | index.html | index.html | index.html |
+| 2 | index.html | tarifas.html | tarifas.html |
+| 3 | index.html | reservas.html | reservas.html |
+| 4 | tarifas.html | index.html | index.html |
+| 5 | tarifas.html | tarifas.html | tarifas.html |
+| 6 | tarifas.html | reservas.html | reservas.html |
+| 7 | reservas.html | index.html | index.html |
+| 8 | reservas.html | tarifas.html | tarifas.html |
+| 9 | reservas.html | reservas.html | reservas.html |
+
+#Rutas de las imagenes 
+
+
+| Archivo de origen | Recurso | Ruta escrita | Ubicación real |
+|---|---|---|---|
+| index.html, tarifas.html, reservas.html | Favicon | img/favicon.png | proyecto/img/favicon.png |
+| index.html, tarifas.html, reservas.html | Portada | img/portada.jpeg | proyecto/img/portada.jpeg |
+
+
+#Justificacion formulario
+
+Tipo de bicicleta con radio, no con select. Solo hay tres opciones y solo se puede elegir una. Con radio las tres se ven a la vez y se elige con un clic. Los tres comparten name="tipo_bicicleta", por eso el navegador solo deja marcar uno.
+Celular con type="tel". 
+
+En el celular abre el teclado numérico y no valida el formato como correo o número. Lo mantuve como tel y no como number, porque un celular no es una cantidad: no se suma ni lleva flechas de subir y bajar.
+
+Aceptar el contrato con checkbox. Es una decisión de sí o no, y con la casilla marcada se envía acepta_terminos=si. Si no se marca, no se envía nada y required impide enviar el formulario.
+
+
+| Campo | Dato de prueba | Resultado esperado | Resultado obtenido |
+|---|---|---|---|
+| Documento | 12345 | No se envía, porque tiene menos de 6 dígitos | No se envió. El navegador pidió respetar el formato: solo números, entre 6 y 10 dígitos |
+| Documento | ABC12345 | No se envía, porque tiene letras | No se envió. El navegador pidió respetar el formato: solo números, entre 6 y 10 dígitos |
+| Correo | maecabrera.correo.com | No se envía, porque no tiene @ | No se envió. El navegador pidió escribir un correo válido |
+| Celular | 1234567890 | No se envía, porque no empieza por 3 | No se envió. El navegador pidió 10 dígitos que empiecen por 3 |
+| Celular | 300123 | No se envía, porque tiene menos de 10 dígitos | No se envió. El navegador pidió 10 dígitos que empiecen por 3 |
+| Fecha | 31/10/2026 | No se envía, porque es anterior al 1 de noviembre de 2026 | No se envió. El navegador indicó que la fecha debe ser el 1 de noviembre de 2026 o posterior |
+| Cantidad | 7 | No se envía, porque el máximo es 6 nisiquiera se puede poner| No se envió. El navegador indicó que el valor debe ser 6 o menor |
+| Políticas | Casilla sin marcar | No se envía, porque es obligatorio aceptarlas | No se envió. El navegador pidió marcar la casilla |
+
+
+## Auditoría de accesibilidad
+
+| Hallazgo | Corrección |
+|---|---|
+| reservas tenía dos h1 | El del encabezado pasó a párrafo; queda un h1 por página |
+| Los alt decían "Imagen de..." | Quité esas palabras |
+| La portada se repetía con el mismo alt en las 3 páginas | Se describe en inicio; en tarifas y reservas lleva alt vacío (decorativa) |
+| Tres enlaces decían solo "ruta" | Ahora dicen "ruta urbana", "ruta de montaña" y "ruta de pista" |
+| Los enlaces "Reserva Ahora !!!!" no eran claros | Ahora dicen "Reservar una bicicleta" |
+| "Encuéntranos" llevaba a la misma página | Ahora lleva a la sección de ubicación |
+| Para llegar al contenido había que pasar por todo el menú | Agregué un enlace "Saltar al contenido principal" |
+
+
+## Contraste
+
+| Texto sobre fondo | Razón | Resultado |
+|---|---|---|
+| Blanco sobre Verde Ruta | 5.31:1 | Apta |
+| Blanco sobre Naranja Pedal | 2.22:1 | No apta |
+| Azul Noche sobre Naranja Pedal | 7.20:1 | Apta |
+| Azul Noche sobre Crema | 14.83:1 | Apta |
+| Gris Asfalto sobre Crema | 5.57:1 | Apta |
+| Verde Ruta sobre Crema | 4.93:1 | Apta |
+| Naranja Pedal sobre Crema | 2.06:1 | No apta |
+| Blanco sobre Azul Noche | 15.97:1 | Apta |
+
+## Mapa de uso de color
+
+- Fondo general: Crema
+- Texto y títulos: Azul Noche
+- Texto secundario: Gris Asfalto
+- Botón principal: fondo Verde Ruta con texto blanco
+- Botón secundario: fondo Naranja Pedal con texto Azul Noche
+- Enlaces: Verde Ruta, subrayados
+- Naranja Pedal nunca se usa como texto sobre Crema ni con texto blanco encima
+
+## Publicación
+
+URL del sitio: https://maecabrera007-afk.github.io/Rueda_libre_Miguel_Turing/
+
+
+## Navegación, enlaces y estados
+
+Conflicto: la clase .activo no funcionaba porque #menu a pesa más. #menu a vale (1, 0, 1) y .activo vale (0, 1, 0). Un id gana sobre cualquier clase, así que el enlace activo seguía en gris.
+
+Solución: escribí la regla como #menu a.activo, que vale (1, 1, 1) y gana.
+
+Orden: la regla de :hover y :focus del menú vale lo mismo que #menu a.activo, así que la puse después.
+
+Estados:
+- Menú: gris normal, verde y en negrita el de la página actual, y blanco sobre verde al pasar el mouse o al enfocar.
+- Botones y enlaces "Reservar": blanco sobre verde, y blanco sobre azul oscuro al pasar el mouse o al enfocar.
+- Campos del formulario: contorno gris al pasar el mouse y contorno grueso azul oscuro al enfocar.
+- Todos los colores de texto cumplen 4.5:1 de contraste.
+
+Con Tab: en las tres páginas siempre se ve dónde está el foco.
+
+## Modelo de caja
+
+Medición del ancho de una tarjeta :
+
+| box-sizing | Contenido | Relleno (izq. + der.) | Borde (izq. + der.) | Ancho total |
+|---|---|---|---|---|
+| content-box (antes) | 656 px | 32 px | 4 px | 692 px |
+| border-box (después) | 620 px | 32 px | 4 px | 656 px |
+
+
+
+## Cierre de la semana: Rueda Libre v1.0
+
+URL del sitio: https://maecabrera007-afk.github.io/Rueda_libre_Miguel_Turing/
+
+Qué construí en cada MiniReto:
+- MiniReto 5: pasé las tres páginas a HTML semántico (encabezado, menú, contenido principal, secciones, artículos y pie).
+- MiniReto 6: hice el formulario de reserva con grupos, etiquetas y los distintos tipos de campo.
+- MiniReto 7: agregué la validación con las reglas del cliente y probé cada una con datos incorrectos.
+- MiniReto 8: revisé la accesibilidad, comprobé el contraste de los colores y publiqué el sitio en GitHub Pages.
+- MiniReto 9: creé la hoja de estilos con variables, las tipografías y los colores de marca.
+- MiniReto 10: estilicé el menú, los botones y los campos con sus estados al pasar el mouse y al enfocar, y resolví el conflicto de especificidad.
+- MiniReto 11: apliqué el modelo de caja a las tarjetas, las tablas y el formulario, y centré el contenido.
+- MiniReto 12: agregué la etiqueta "Nuevo", el enlace de WhatsApp siempre visible y ordené la hoja de estilos.
+
+Qué mejoraría:
+- Agregar imágenes, ruta y precios al servicio de bicicletas eléctricas.
+- Poner el número real de WhatsApp.
+- Revisar los textos con el cliente errores de ortografía y datos de contacto de ejemplo.
+- Hacer que el sitio se vea bien en pantallas pequeñas.
+- Conectar el formulario a un servidor para que las reservas se reciban de verdad.
+
+Comprobación final: sin declaraciones tachadas inesperadas, sin errores 404 y con recorrido completo con teclado
+
+## Semana 2
+
+Al estrechar la ventana
+
+Encabezado: El menu como bloque se pone debajo de el nombre de la pagina que esta a la izquiera y entre los componentes del menu cada uno se va organizando de manera vertical
+
+Pie pagina: lo mismo se van organizando un elemnto debajo de otro contacto debajo de marca y de ultimo horario
+
+
