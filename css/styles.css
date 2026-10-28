@@ -28,7 +28,7 @@ body {
     line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6 {
+ h2, h3, h4, h5, h6 {
     font-family: var(--fuente-titulos);
     font-weight: 700;
 }
@@ -55,6 +55,7 @@ header {
     justify-content: space-between;
     align-items: center;
     gap: var(--espacio-m);
+    padding-bottom: var(--espacio-m);
 }
 
 .marca,
@@ -64,10 +65,10 @@ header {
 
 .eslogan,
 header img {
-    flex: 0 0 100%;
+    flex: 0 0 10%;
 }
 
-header,
+
 main,
 footer {
     max-width: 45rem;
@@ -233,25 +234,23 @@ textarea:focus {
 
 /* ---------- NUESTRA FLOTA ---------- */
 
-/* Grid: la cantidad de columnas depende del espacio, sin media queries */
 .flota {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
     gap: var(--espacio-l);
 }
 
-/* Cada tarjeta conserva el box model de la semana 1 (.tarjeta)
-   y organiza su contenido en columna con Flexbox */
+
 .flota .tarjeta {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-bottom: 0;           /* el espacio entre filas ya lo hace el gap */
+    margin-bottom: 0;           
 }
 
 .flota .tarjeta img {
     margin-top: 0;
-    aspect-ratio: 4 / 3;        /* todas las fotos con la misma proporción */
+    aspect-ratio: 4 / 3;        
     object-fit: cover;
 }
 
@@ -267,8 +266,7 @@ textarea:focus {
     font-weight: 600;
 }
 
-/* El margen automático absorbe todo el espacio libre:
-   empuja el enlace al final de la tarjeta */
+
 .flota .reservar {
     margin-top: auto;
     text-align: center;
