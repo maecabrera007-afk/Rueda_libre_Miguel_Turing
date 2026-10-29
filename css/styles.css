@@ -1,3 +1,4 @@
+
 :root {
     --verde-ruta: #1E7A4F;
     --naranja-pedal: #F39A2B;
@@ -14,6 +15,9 @@
     --espacio-l: 2rem;
 }
 
+
+/* ---------- BASE ---------- */
+
 *,
 *::before,
 *::after {
@@ -28,90 +32,29 @@ body {
     line-height: 1.5;
 }
 
- h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
     font-family: var(--fuente-titulos);
     font-weight: 700;
+}
+
+h1 {
+    font-size: 1.6rem;
 }
 
 strong, th {
     font-weight: 600;
 }
 
+/* Imágenes fluidas: nunca más anchas que su contenedor */
 img {
+    display: block;
     max-width: 100%;
     height: auto;
 }
 
-
-header {
-    padding: var(--espacio-m) var(--espacio-l);
-    color: var(--blanco);
-    background-color: var(--azul-noche);
-    border-bottom: var(--espacio-s) solid var(--naranja-pedal);
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--espacio-m);
-    padding-bottom: var(--espacio-m);
-}
-
-.marca,
-.eslogan {
-    margin: 0;
-}
-
-.eslogan,
-header img {
-    flex: 0 0 10%;
-}
-
-
-main,
-footer {
-    max-width: 45rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-main,
-footer {
-    padding: var(--espacio-m) var(--espacio-l);
-}
-
-footer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1.5rem;
-}
-
-footer > * {
-    flex: 1 1 200px;
-    margin: 0;  
-}
-
-.portada {
-    min-height: 50vh;
-}
-
-footer,
-small {
-    color: var(--gris-asfalto);
-}
-
-
 a {
     color: var(--verde-ruta);
     text-decoration: underline;
-}
-
-header a {
-    color: var(--blanco);
 }
 
 a:hover,
@@ -120,50 +63,143 @@ a:focus {
     text-decoration-thickness: 0.2rem;
 }
 
+small {
+    color: var(--gris-asfalto);
+}
+
+
+/* ---------- SALTAR AL CONTENIDO ---------- */
+
+.saltar {
+    position: absolute;
+    left: -9999px;
+}
+
+.saltar:focus {
+    left: 1rem;
+    top: 1rem;
+    z-index: 10;
+    padding: 0.5rem 1rem;
+    background: var(--blanco);
+}
+
+
+/* ---------- HEADER (móvil: marca arriba, menú debajo, centrado) ---------- */
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espacio-s);
+    padding: 0.75rem var(--espacio-m);
+    text-align: center;
+    color: var(--blanco);
+    background-color: var(--azul-noche);
+    border-bottom: 4px solid var(--naranja-pedal);
+}
+
+header a {
+    color: var(--blanco);
+}
+
 header a:hover,
 header a:focus {
     color: var(--naranja-pedal);
 }
 
+.marca {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espacio-s);
+    margin: 0;
+    font-family: var(--fuente-titulos);
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.marca img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.eslogan {
+    margin: 0;
+}
+
+
+/* ---------- MENÚ ---------- */
 
 nav ul {
-    background-color: var(--crema);
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
+    justify-content: center;
+    gap: 0.25rem;
     list-style: none;
     margin: 0;
     padding: 0;
-}
-
-#menu {
-    margin: 0;
-    padding: var(--espacio-s);
-    list-style: none;
+    background: none;
 }
 
 #menu a {
     display: inline-block;
-    padding: var(--espacio-s) var(--espacio-m);
-    color: var(--gris-asfalto);
-}
-
-
-#menu a.activo {
-    color: var(--verde-ruta);
+    padding: 0.45rem 1rem;
+    font-family: var(--fuente-titulos);
+    font-size: 0.8rem;
     font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--blanco);
+    border-radius: 999px;
+    transition: background-color 0.2s, color 0.2s;
 }
-
 
 #menu a:hover,
 #menu a:focus {
     color: var(--blanco);
-    background-color: var(--verde-ruta);
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
-#menu a:focus-visible {
-    outline-color: var(--azul-noche);
+#menu a.activo {
+    color: var(--azul-noche);
+    background-color: var(--naranja-pedal);
 }
+
+
+/* ---------- MAIN ---------- */
+
+main {
+    max-width: 70rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: var(--espacio-m);
+}
+
+
+/* ---------- FOOTER (móvil: apilado y centrado) ---------- */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espacio-m);
+    max-width: 70rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: var(--espacio-m);
+    text-align: center;
+    color: var(--gris-asfalto);
+}
+
+footer > * {
+    margin: 0;
+}
+
+
+/* ---------- BOTONES ---------- */
 
 button,
 .boton-cta {
@@ -188,32 +224,12 @@ button:focus,
     background-color: var(--azul-noche);
 }
 
-input,
-select,
-textarea,
-button {
-    font: inherit;
-}
 
-
-input:hover,
-select:hover,
-textarea:hover {
-    outline: 0.125rem solid var(--gris-asfalto);
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-    outline: 0.25rem solid var(--azul-noche);
-    outline-offset: 0.125rem;
-    background-color: var(--blanco);
-}
-
+/* ---------- TARJETAS ---------- */
 
 .tarjeta {
     width: 100%;
-    margin-bottom: var(--espacio-l);
+    margin-bottom: var(--espacio-m);
     padding: var(--espacio-m);
     background-color: var(--blanco);
     border: 2px solid var(--gris-asfalto);
@@ -225,32 +241,39 @@ textarea:focus {
 }
 
 .tarjeta img {
-    display: block;
     width: 100%;
-    height: auto;
     margin-top: var(--espacio-s);
 }
 
 
-/* ---------- NUESTRA FLOTA ---------- */
+/* ---------- PORTADA INICIO (móvil: una columna) ---------- */
+
+.portada-inicio {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--espacio-m);
+    align-items: center;
+}
+
+
+/* ---------- NUESTRA FLOTA (móvil: 1 columna) ---------- */
 
 .flota {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    gap: var(--espacio-l);
+    grid-template-columns: 1fr;
+    gap: var(--espacio-m);
 }
-
 
 .flota .tarjeta {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-bottom: 0;           
+    margin-bottom: 0;
 }
 
 .flota .tarjeta img {
     margin-top: 0;
-    aspect-ratio: 4 / 3;        
+    aspect-ratio: 4 / 3;
     object-fit: cover;
 }
 
@@ -266,30 +289,68 @@ textarea:focus {
     font-weight: 600;
 }
 
-
 .flota .reservar {
     margin-top: auto;
     text-align: center;
 }
 
 
+/* ---------- NUESTRAS RUTAS (móvil: 1 columna) ---------- */
+
+.recorridos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--espacio-m);
+}
+
+.recorridos .tarjeta {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 0;
+}
+
+.recorridos .tarjeta img {
+    margin-top: 0;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.recorridos .tarjeta h3 {
+    margin: var(--espacio-s) 0;
+}
+
+.recorridos .tarjeta p {
+    margin: 0 0 var(--espacio-s);
+}
+
+.recorridos .reservar {
+    margin-top: auto;
+    text-align: center;
+}
+
+
+/* ---------- TABLAS (móvil: letra y relleno reducidos, sin scroll lateral) ---------- */
+
 table {
     width: 100%;
     margin-bottom: var(--espacio-m);
     border-collapse: collapse;
+    font-size: 0.8rem;
 }
 
 caption {
-    padding: var(--espacio-s);
+    padding: var(--espacio-s) 0;
     font-weight: 600;
     text-align: left;
 }
 
 th,
 td {
-    padding: var(--espacio-s) var(--espacio-m);
+    padding: 0.35rem 0.4rem;
     border: 1px solid var(--gris-asfalto);
     text-align: left;
+    overflow-wrap: break-word;
 }
 
 th {
@@ -298,11 +359,13 @@ th {
 }
 
 
+/* ---------- FORMULARIOS (móvil: una columna) ---------- */
 
 fieldset {
-    margin-bottom: var(--espacio-l);
+    margin: 0 0 var(--espacio-m);
     padding: var(--espacio-m);
     border: 1px solid var(--gris-asfalto);
+    min-width: 0;
 }
 
 legend {
@@ -314,18 +377,22 @@ fieldset p {
     margin: 0 0 var(--espacio-m);
 }
 
-
 label {
     display: block;
     margin-bottom: var(--espacio-s);
 }
-
 
 input + label {
     display: inline-block;
     margin-bottom: 0;
 }
 
+input,
+select,
+textarea,
+button {
+    font: inherit;
+}
 
 input[type="text"],
 input[type="email"],
@@ -340,6 +407,20 @@ textarea {
     border: 1px solid var(--gris-asfalto);
 }
 
+input:hover,
+select:hover,
+textarea:hover {
+    outline: 0.125rem solid var(--gris-asfalto);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 0.25rem solid var(--azul-noche);
+    outline-offset: 0.125rem;
+    background-color: var(--blanco);
+}
+
 fieldset small {
     display: block;
     margin-top: var(--espacio-s);
@@ -350,6 +431,54 @@ form button {
 }
 
 
+/* ---------- RESERVAS (móvil: formulario y contacto apilados) ---------- */
+
+.reservas-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--espacio-m);
+    align-items: start;
+}
+
+.reservas-formulario h2,
+.reservas-contacto h2 {
+    margin-top: 0;
+}
+
+.reserva {
+    background-color: var(--blanco);
+    border-radius: var(--espacio-s);
+}
+
+.layout {
+    margin: 0 0 var(--espacio-m);
+}
+
+.fila-campos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 var(--espacio-m);
+}
+
+.reservas-contacto {
+    padding: var(--espacio-m);
+    background-color: var(--blanco);
+    border: 2px solid var(--gris-asfalto);
+    border-radius: var(--espacio-s);
+}
+
+.reservas-contacto dl,
+.reservas-contacto p {
+    margin: 0 0 var(--espacio-m);
+}
+
+.reservas-contacto dd {
+    margin: 0 0 var(--espacio-s);
+}
+
+
+/* ---------- ACCESIBILIDAD ---------- */
+
 :focus-visible {
     outline: 0.1875rem solid var(--azul-noche);
     outline-offset: 0.125rem;
@@ -357,4 +486,103 @@ form button {
 
 header :focus-visible {
     outline-color: var(--naranja-pedal);
+}
+
+
+/* ------ TABLET — desde 768px----- */
+
+@media (min-width: 768px) {
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    header {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: var(--espacio-m);
+        padding: 0.75rem var(--espacio-l);
+        text-align: left;
+    }
+
+    .marca {
+        font-size: 1.35rem;
+    }
+
+    nav ul {
+        justify-content: flex-end;
+    }
+
+    main {
+        padding: var(--espacio-m) var(--espacio-l);
+    }
+
+    /* Pie: bloques en una fila */
+    footer {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: var(--espacio-m) var(--espacio-l);
+        text-align: left;
+    }
+
+    footer > * {
+        flex: 1 1 12rem;
+    }
+
+    /* Portada: texto a la izquierda, foto a la derecha */
+    .portada-inicio {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--espacio-l);
+    }
+
+    /* Flota: 2 columnas */
+    .flota {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--espacio-l);
+    }
+
+    /* Rutas: 3 tarjetas en una fila */
+    .recorridos {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--espacio-m);
+    }
+
+    /* Formulario: documento y celular en la misma fila */
+    .fila-campos {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Tablas: letra y relleno normales */
+    table {
+        font-size: 1rem;
+    }
+
+    th,
+    td {
+        padding: var(--espacio-s) var(--espacio-m);
+    }
+}
+
+
+/* ------ ESCRITORIO — desde 1200px  ----------- */
+
+@media (min-width: 1200px) {
+
+    /* Flota: 3 columnas */
+    .flota {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .recorridos {
+        gap: var(--espacio-l);
+    }
+
+    /* Reservas: formulario 2 : contacto 1 */
+    .reservas-layout {
+        grid-template-columns: 2fr 1fr;
+        gap: var(--espacio-l);
+    }
 }

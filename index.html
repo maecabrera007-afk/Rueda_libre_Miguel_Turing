@@ -7,15 +7,14 @@
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <a href="#contenido">Saltar al contenido principal</a>
+    <a href="#contenido" class="saltar">Saltar al contenido principal</a>
 
     <header class="portada">
-        <p class="marca"> Rueda Libre</p>
-        <img src="img/portada.jpeg" alt="Frente de la tienda Rueda Libre con bicicletas urbanas en Medellín" width="100">
+        <p class="marca">Rueda Libre</p>
 
         <nav aria-label="Principal">
             <ul id="menu">
@@ -28,11 +27,17 @@
     </header>
 
     <main id="contenido">
-        <h1>Rueda Libre | Alquiler de bicicletas en Medellín</h1>
-        <p class="eslogan">Alquiler de bicicletas en Medellín , No perdamos tiempor <a href="#Encuéntranos">Encuéntranos</a></p>
 
+        <section class="portada-inicio">
+            <div class="portada-inicio-texto">       
+            <h1>Rueda Libre</h1>
+            </div>
+            <img src="img/portada.jpeg" alt="Frente de la tienda Rueda Libre con bicicletas urbanas en Medellín" width="600">
+           
+        </section>
 
         <section>
+            <p> <p class="eslogan">Alquiler de bicicletas en Medellín , No perdamos tiempor <a href="#Encuéntranos">Encuéntranos</a></></p>
             <h2>Nuestros servicios</h2>
             
             <article class="tarjeta">
@@ -115,6 +120,35 @@
                 <p class="precio">$20.000 por hora</p>
                 <a href="reservas.html" class="boton-cta reservar">Reservar</a>
             </article>
+            </div>
+        </section>
+
+        <section>
+
+            <h2>Recorridos</h2>
+
+            <div class="recorridos">
+                <article class="tarjeta">
+                    <img src="img/ruta_picnic.jpeg" alt="Recorrido picnic" width="400">
+                    <h3>Recorrido picnic</h3>
+                    <p>Un recorrido por los mejores lugares de la ciudad.</p>
+                    <a href="reservas.html" class="boton-cta reservar">Reservar</a>
+                </article>
+
+                <article class="tarjeta">
+                    <img src="img/ruta_montaña.jpeg" alt="Recorrido montaña" width="400">
+                    <h3>Recorrido montaña</h3>
+                    <p>Un recorrido por los mejores lugares de la montaña.</p>
+
+                    <a href="reservas.html" class="boton-cta reservar">Reservar</a>
+                </article>
+
+                <article class="tarjeta">
+                    <img src="img/ruta_pista.jpeg" alt="Recorrido psita" width="400">
+                    <h3>Recorrido pista</h3>
+                    <p>Un circuito en pista para hcer en el mejor tiempo posible </p>
+                    <a href="reservas.html" class="boton-cta reservar">Reservar</a>
+                </article>
             </div>
         </section>
 

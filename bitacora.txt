@@ -207,3 +207,18 @@ Encabezado: El menu como bloque se pone debajo de el nombre de la pagina que est
 Pie pagina: lo mismo se van organizando un elemnto debajo de otro contacto debajo de marca y de ultimo horario
 
 
+
+NUESTRA FLOTA 
+
+Ancho 1280 px: 2 columnas
+Ancho  900 px: 2 columnas
+Ancho  500 px: 1 columna
+
+Observaciones:
+- A 1280 y 900 px se ve igual porque el main tiene max-width de 45rem
+  y el contenido no crece más allá de ese ancho.
+- A 500 px las tarjetas pasan a una sola columna porque ya no caben
+  dos de 14rem de ancho mínimo.
+
+
+  

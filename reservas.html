@@ -3,28 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservas | Rueda Libre</title>
+    <title>Rueda Libre | Alquiler de bicicletas en Medellín</title>
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-
 </head>
 <body>
-    <a href="#contenido">Saltar al contenido principal</a>
+    <a href="#contenido" class="saltar">Saltar al contenido principal</a>
 
     <header class="portada">
-        <p class="marca"> Rueda Libre</p>
+        <p class="marca">Rueda Libre</p>
+
         <nav aria-label="Principal">
             <ul id="menu">
-                <li><a href="index.html" class="activo" aria-current="page">Inicio</a></li>
+                <li><a href="index.html" >Inicio</a></li>
                 <li><a href="tarifas.html">Tarifas</a></li>
-                <li><a href="reservas.html">Reservas</a></li>
+                <li><a href="reservas.html" class="activo" aria-current="page">Reservas</a></li>
             </ul>
         </nav>
-        <img src="img/portada.jpeg" alt="Frente de la tienda Rueda Libre con bicicletas urbanas en Medellín" width="700">
-        <p class="eslogan">Alquiler de bicicletas en Medellín , No perdamos tiempor <a href="#Encuéntranos">Encuéntranos</a></p>
 
     </header>
 
@@ -54,16 +52,16 @@
 
                 <p>Todos los campos son obligatorios, excepto los comentarios.</p>
 
-                <fieldset>
+                <fieldset class="reservas">
                     <legend>Tus datos</legend>
 
-                    <p>
+                    <p class="layout">
                         <label for="nombre">Nombre completo</label>
                         <input type="text" id="nombre" name="nombre" autocomplete="name"
                                required minlength="3">
                     </p>
 
-                    <p>
+                    <p class="layout">
                         <label for="documento">Número de documento</label>
                         <input type="text" id="documento" name="documento" inputmode="numeric"
                                required minlength="6" maxlength="10"
@@ -73,7 +71,7 @@
                         <small id="ayuda-documento">Solo números, de 6 a 10 dígitos.</small>
                     </p>
 
-                    <p>
+                    <p class="layout">
                         <label for="correo">Correo electrónico</label>
                         <input type="email" id="correo" name="correo" autocomplete="email"
                                required
@@ -81,7 +79,7 @@
                                title="Escribe un correo válido, por ejemplo: nombre@correo.com">
                     </p>
 
-                    <p>
+                    <p class="layout">
                         <label for="celular">Celular</label>
                         <input type="tel" id="celular" name="celular" autocomplete="tel" inputmode="numeric"
                                required minlength="10" maxlength="10"
@@ -92,10 +90,10 @@
                     </p>
                 </fieldset>
 
-                <fieldset>
+                <fieldset class="reserva">
                     <legend>Tu alquiler</legend>
 
-                    <p>
+                    <p calss="layout">
                         <label for="fecha">Fecha del alquiler</label>
                         <input type="date" id="fecha" name="fecha"
                                required min="2026-11-01" max="2026-12-31"
@@ -103,24 +101,24 @@
                         <small id="ayuda-fecha">Entre el 1 de noviembre y el 31 de diciembre de 2026.</small>
                     </p>
 
-                    <fieldset>
+                    <fieldset calss="layout">
                         <legend>Tipo de bicicleta</legend>
 
-                        <p>
+                        <p class="layout">
                             <input type="radio" id="tipo-urbana" name="tipo_bicicleta" value="Urbana" required>
                             <label for="tipo-urbana">Urbana</label>
                         </p>
-                        <p>
+                        <p class="layout">
                             <input type="radio" id="tipo-montana" name="tipo_bicicleta" value="Montaña">
                             <label for="tipo-montana">Montaña</label>
                         </p>
-                        <p>
+                        <p class="layout">
                             <input type="radio" id="tipo-pista" name="tipo_bicicleta" value="Pista">
                             <label for="tipo-pista">Pista</label>
                         </p>
                     </fieldset>
 
-                    <p>
+                    <p calss="layout">
                         <label for="plan">Plan de alquiler</label>
                         <select id="plan" name="plan" required>
                             <option value="">Seleccione un plan</option>
@@ -128,9 +126,9 @@
                             <option value="medio_dia">Medio día (4 h)</option>
                             <option value="dia_completo">Día completo</option>
                         </select>
-                    </p>
+                    </p> 
 
-                    <p>
+                    <p class="layout">
                         <label for="cantidad">Cantidad de bicicletas</label>
                         <input type="number" id="cantidad" name="cantidad"
                                required min="1" max="6" step="1"
@@ -139,17 +137,17 @@
                     </p>
                 </fieldset>
 
-                <fieldset>
+                <fieldset class="reserva">
                     <legend>Confirmación</legend>
 
-                    <p>
+                    <p calss="layout">
                         <label for="comentarios">Comentarios adicionales (opcional)</label>
                         <textarea id="comentarios" name="comentarios" rows="4" cols="40"
                                   maxlength="300" aria-describedby="ayuda-comentarios"></textarea>
                         <small id="ayuda-comentarios">Máximo 300 caracteres.</small>
                     </p>
 
-                    <p>
+                    <p class="layout">
                         <input type="checkbox" id="acepta-politicas" name="acepta_politicas" value="si" required>
                         <label for="acepta-politicas">Acepto las políticas de alquiler</label>
                     </p>
