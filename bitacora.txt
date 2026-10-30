@@ -222,3 +222,11 @@ Observaciones:
 
 
   
+BITÁCORA - MINIRETO 4
+
+
+ PROBLEMAS RESPONSIVE 
+Problema 1: [las imagenes en el apartado de "Nuestros servicios" se veian demacioado  grande] -> [1280xp] -> [les puse una clase porpia al section y dentro de eso en .tarjeta img con aspect-ratio , max-height y object-fit:cover , y que las dos imagenes se acomodaran de lado a lado desde los 768xp]
+Problema 2: [las imagenes con with="700" en el html provocaban el scroll horizontal] -> [360xp] -> [img {max-width :100% ; height :auto;}]
+Problema 3: [marca y menu estaban en una sola fila ] -> [360px] -> [El encabezado se pasa a que se organicen en columnas y centrado y que se organice en fila desde los 768 px.]
+
