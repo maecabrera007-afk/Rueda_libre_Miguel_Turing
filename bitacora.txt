@@ -251,3 +251,12 @@ Problema 3: [marca y menu estaban en una sola fila ] -> [360px] -> [El encabezad
 - Los cortes de pantalla los decide Bootstrap (576, 992 y 1200 px), no yo
 - El HTML quedó lleno de clases, repetidas en cada uno de los siete modelos
 - Dependo de un archivo externo (CDN) para que funcione el diseño
+
+
+## Beneficios y franja final: clases consultadas en la documentación de Bootstrap 5.3
+
+1. d-none: oculta el elemento en todos los tamaños de pantalla.
+2. d-md-block: muestra el elemento como bloque desde 768 px. Junto con d-none, la imagen decorativa solo aparece desde md.
+3. flex-md-row: pone los hijos de un contenedor flex en fila desde md. Antes de md quedan en columna con flex-column.
+4. gap-3: separa los hijos de un contenedor flex o grid sin usar márgenes.
+5. text-bg-dark: aplica fondo oscuro y texto con buen contraste, todo con una sola clase.
