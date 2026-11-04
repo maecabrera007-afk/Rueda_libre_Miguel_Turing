@@ -230,3 +230,24 @@ Problema 1: [las imagenes en el apartado de "Nuestros servicios" se veian demaci
 Problema 2: [las imagenes con with="700" en el html provocaban el scroll horizontal] -> [360xp] -> [img {max-width :100% ; height :auto;}]
 Problema 3: [marca y menu estaban en una sola fila ] -> [360px] -> [El encabezado se pasa a que se organicen en columnas y centrado y que se organice en fila desde los 768 px.]
 
+
+
+## Prueba Bootstrap 5.3: flota (pruebas/catalogo-bootstrap.html)
+
+**Tiempo invertido**
+- CSS propio: [5] ms
+- Bootstrap: [_20_] ms
+
+**Cantidad de código (distribución de la flota)**
+- CSS propio: 12 líneas de CSS (1, 2 y 3 columnas)
+- Bootstrap: 0 líneas de CSS y 7 clases de grilla (container, row, g-4, col-12, col-sm-6, col-lg-4, col-xl-3), con las que se logran 1, 2, 3 y 4 columnas
+
+**Qué me dio Bootstrap sin esfuerzo**
+- Los cuatro cortes de pantalla (1, 2, 3 y 4 columnas) sin escribir media queries
+- La separación uniforme entre tarjetas con g-4
+- El ancho máximo y el centrado de la página con container
+
+**Qué control perdí**
+- Los cortes de pantalla los decide Bootstrap (576, 992 y 1200 px), no yo
+- El HTML quedó lleno de clases, repetidas en cada uno de los siete modelos
+- Dependo de un archivo externo (CDN) para que funcione el diseño
