@@ -15,21 +15,20 @@
     --espacio-l: 2rem;
 }
 
-
-/* ---------- BASE ---------- */
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+:root {
+    --bs-success-rgb: 30, 122, 79;     /* verde-ruta     #1E7A4F */
+    --bs-warning-rgb: 243, 154, 43;    /* naranja-pedal  #F39A2B */
+    --bs-dark-rgb: 20, 33, 61;         /* azul-noche     #14213D */
+    --bs-secondary-rgb: 91, 100, 112;  /* gris-asfalto   #5B6470 */
 }
 
+
+/* ---------- TIPOGRAFÍA Y COLOR BASE ---------- */
+
 body {
-    margin: 0;
     font-family: var(--fuente-texto);
     color: var(--azul-noche);
     background-color: var(--crema);
-    line-height: 1.5;
 }
 
 h2, h3, h4, h5, h6 {
@@ -41,11 +40,21 @@ h1 {
     font-size: 1.6rem;
 }
 
+h2 {
+    font-size: 1.5rem;
+    margin: 0.83em 0;
+}
+
+h3 {
+    font-size: 1.17rem;
+    margin: 1em 0;
+}
+
 strong, th {
     font-weight: 600;
 }
 
-/* Imágenes fluidas: nunca más anchas que su contenedor */
+/* Imágenes fluidas */
 img {
     display: block;
     max-width: 100%;
@@ -84,15 +93,9 @@ small {
 }
 
 
-/* ---------- HEADER (móvil: marca arriba, menú debajo, centrado) ---------- */
+/* ---------- HEADER Y MENÚ  ---------- */
 
 header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--espacio-s);
-    padding: 0.75rem var(--espacio-m);
-    text-align: center;
     color: var(--blanco);
     background-color: var(--azul-noche);
     border-bottom: 4px solid var(--naranja-pedal);
@@ -108,10 +111,6 @@ header a:focus {
 }
 
 .marca {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--espacio-s);
     margin: 0;
     font-family: var(--fuente-titulos);
     font-size: 1.25rem;
@@ -120,27 +119,8 @@ header a:focus {
     text-transform: uppercase;
 }
 
-.marca img {
-    width: 2.5rem;
-    height: 2.5rem;
-}
-
 .eslogan {
     margin: 0;
-}
-
-
-/* ---------- MENÚ ---------- */
-
-nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.25rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background: none;
 }
 
 #menu a {
@@ -169,33 +149,10 @@ nav ul {
 }
 
 
-/* ---------- MAIN ---------- */
-
-main {
-    max-width: 70rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding: var(--espacio-m);
-}
-
-
-/* ---------- FOOTER (móvil: apilado y centrado) ---------- */
+/* ---------- FOOTER ---------- */
 
 footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--espacio-m);
-    max-width: 70rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding: var(--espacio-m);
-    text-align: center;
     color: var(--gris-asfalto);
-}
-
-footer > * {
-    margin: 0;
 }
 
 
@@ -228,8 +185,6 @@ button:focus,
 /* ---------- TARJETAS ---------- */
 
 .tarjeta {
-    width: 100%;
-    margin-bottom: var(--espacio-m);
     padding: var(--espacio-m);
     background-color: var(--blanco);
     border: 2px solid var(--gris-asfalto);
@@ -245,43 +200,20 @@ button:focus,
     margin-top: var(--espacio-s);
 }
 
-
-/* ---------- PORTADA INICIO (móvil: una columna) ---------- */
-
-.portada-inicio {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--espacio-m);
-    align-items: center;
-}
-
-
-/* ---------- NUESTRA FLOTA (móvil: 1 columna) ---------- */
-
-.flota {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--espacio-m);
-}
-
-.flota .tarjeta {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-bottom: 0;
-}
-
-.flota .tarjeta img {
+.flota .tarjeta img,
+.recorridos .tarjeta img {
     margin-top: 0;
     aspect-ratio: 4 / 3;
     object-fit: cover;
 }
 
-.flota .tarjeta h3 {
+.flota .tarjeta h3,
+.recorridos .tarjeta h3 {
     margin: var(--espacio-s) 0;
 }
 
-.flota .tarjeta p {
+.flota .tarjeta p,
+.recorridos .tarjeta p {
     margin: 0 0 var(--espacio-s);
 }
 
@@ -289,48 +221,16 @@ button:focus,
     font-weight: 600;
 }
 
-.flota .reservar {
-    margin-top: auto;
-    text-align: center;
-}
-
-
-/* ---------- NUESTRAS RUTAS (móvil: 1 columna) ---------- */
-
-.recorridos {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--espacio-m);
-}
-
-.recorridos .tarjeta {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-bottom: 0;
-}
-
-.recorridos .tarjeta img {
-    margin-top: 0;
-    aspect-ratio: 4 / 3;
+/* Servicios: imágenes de la tarjeta */
+.servicios .tarjeta img {
+    width: 100%;
+    max-height: 14rem;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
 }
 
-.recorridos .tarjeta h3 {
-    margin: var(--espacio-s) 0;
-}
 
-.recorridos .tarjeta p {
-    margin: 0 0 var(--espacio-s);
-}
-
-.recorridos .reservar {
-    margin-top: auto;
-    text-align: center;
-}
-
-
-/* ---------- TABLAS (móvil: letra y relleno reducidos, sin scroll lateral) ---------- */
+/* ---------- TABLAS ---------- */
 
 table {
     width: 100%;
@@ -340,7 +240,9 @@ table {
 }
 
 caption {
+    caption-side: top;
     padding: var(--espacio-s) 0;
+    color: var(--azul-noche);
     font-weight: 600;
     text-align: left;
 }
@@ -359,7 +261,7 @@ th {
 }
 
 
-/* ---------- FORMULARIOS (móvil: una columna) ---------- */
+/* ---------- FORMULARIOS ---------- */
 
 fieldset {
     margin: 0 0 var(--espacio-m);
@@ -369,7 +271,11 @@ fieldset {
 }
 
 legend {
+    float: none;
+    width: auto;
+    margin: 0;
     padding: 0 var(--espacio-s);
+    font-size: 1rem;
     font-weight: 600;
 }
 
@@ -430,54 +336,13 @@ form button {
     padding: var(--espacio-m) var(--espacio-l);
 }
 
-
-/* ---------- RESERVAS (móvil: formulario y contacto apilados) ---------- */
-
-.reservas-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--espacio-m);
-    align-items: start;
-}
-
-.reservas-formulario h2,
-.reservas-contacto h2 {
-    margin-top: 0;
-}
-
 .reserva {
     background-color: var(--blanco);
     border-radius: var(--espacio-s);
 }
 
-.layout {
-    margin: 0 0 var(--espacio-m);
-}
 
-.fila-campos {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0 var(--espacio-m);
-}
-
-.reservas-contacto {
-    padding: var(--espacio-m);
-    background-color: var(--blanco);
-    border: 2px solid var(--gris-asfalto);
-    border-radius: var(--espacio-s);
-}
-
-.reservas-contacto dl,
-.reservas-contacto p {
-    margin: 0 0 var(--espacio-m);
-}
-
-.reservas-contacto dd {
-    margin: 0 0 var(--espacio-s);
-}
-
-
-/* ---------- ACCESIBILIDAD ---------- */
+/* ---------- ACCESIBILIDAD  ---------- */
 
 :focus-visible {
     outline: 0.1875rem solid var(--azul-noche);
@@ -489,7 +354,7 @@ header :focus-visible {
 }
 
 
-/* ------ TABLET — desde 768px----- */
+/* ---------- DESDE 768px ---------- */
 
 @media (min-width: 768px) {
 
@@ -497,65 +362,14 @@ header :focus-visible {
         font-size: 2rem;
     }
 
-    header {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: var(--espacio-m);
-        padding: 0.75rem var(--espacio-l);
-        text-align: left;
-    }
-
     .marca {
         font-size: 1.35rem;
     }
 
-    nav ul {
-        justify-content: flex-end;
+    .servicios .tarjeta img {
+        max-height: 16rem;
     }
 
-    main {
-        padding: var(--espacio-m) var(--espacio-l);
-    }
-
-    /* Pie: bloques en una fila */
-    footer {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: var(--espacio-m) var(--espacio-l);
-        text-align: left;
-    }
-
-    footer > * {
-        flex: 1 1 12rem;
-    }
-
-    /* Portada: texto a la izquierda, foto a la derecha */
-    .portada-inicio {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--espacio-l);
-    }
-
-    /* Flota: 2 columnas */
-    .flota {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--espacio-l);
-    }
-
-    /* Rutas: 3 tarjetas en una fila */
-    .recorridos {
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--espacio-m);
-    }
-
-    /* Formulario: documento y celular en la misma fila */
-    .fila-campos {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    /* Tablas: letra y relleno normales */
     table {
         font-size: 1rem;
     }
@@ -563,56 +377,5 @@ header :focus-visible {
     th,
     td {
         padding: var(--espacio-s) var(--espacio-m);
-    }
-}
-
-
-/* ------ ESCRITORIO — desde 1200px  ----------- */
-
-@media (min-width: 1200px) {
-
-    /* Flota: 3 columnas */
-    .flota {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .recorridos {
-        gap: var(--espacio-l);
-    }
-
-    /* Reservas: formulario 2 : contacto 1 */
-    .reservas-layout {
-        grid-template-columns: 2fr 1fr;
-        gap: var(--espacio-l);
-    }
-}
-
-/* ---------- NUESTROS SERVICIOS ---------- */
-
-
-.servicios .tarjeta img {
-    width: 100%;
-    max-height: 14rem;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-}
-
-
-@media (min-width: 768px) {
-    .servicios .tarjeta {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--espacio-m);
-    }
-
-    .servicios .tarjeta h3,
-    .servicios .tarjeta p {
-        grid-column: 1 / -1;
-        margin: 0;
-    }
-
-    .servicios .tarjeta img {
-        margin-top: 0;
-        max-height: 16rem;
     }
 }

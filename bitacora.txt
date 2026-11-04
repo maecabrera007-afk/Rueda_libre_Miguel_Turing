@@ -235,8 +235,8 @@ Problema 3: [marca y menu estaban en una sola fila ] -> [360px] -> [El encabezad
 ## Prueba Bootstrap 5.3: flota (pruebas/catalogo-bootstrap.html)
 
 **Tiempo invertido**
-- CSS propio: [5] ms
-- Bootstrap: [_20_] ms
+- CSS propio: 3 horas
+- Bootstrap:  1 y 30 horas
 
 **Cantidad de código (distribución de la flota)**
 - CSS propio: 12 líneas de CSS (1, 2 y 3 columnas)
@@ -253,10 +253,55 @@ Problema 3: [marca y menu estaban en una sola fila ] -> [360px] -> [El encabezad
 - Dependo de un archivo externo (CDN) para que funcione el diseño
 
 
-## Beneficios y franja final: clases consultadas en la documentación de Bootstrap 5.3
+##  clases
 
 1. d-none: oculta el elemento en todos los tamaños de pantalla.
 2. d-md-block: muestra el elemento como bloque desde 768 px. Junto con d-none, la imagen decorativa solo aparece desde md.
 3. flex-md-row: pone los hijos de un contenedor flex en fila desde md. Antes de md quedan en columna con flex-column.
 4. gap-3: separa los hijos de un contenedor flex o grid sin usar márgenes.
 5. text-bg-dark: aplica fondo oscuro y texto con buen contraste, todo con una sola clase.
+
+
+
+
+
+## Problemas de compatibilidad css y bootstrap
+
+Conflicto 1: tamaño y márgenes de los títulos (h2 y h3)**
+- Conflicto: Bootstrap define el tamaño de h2 y h3 con calc(...) (hasta 2rem en pantallas grandes) y les quita el margen superior, por lo que los títulos cambian de tamaño y quedan pegados al contenido.
+- Solución: declaré h2 { font-size: 1.5rem; margin: 0.83em 0 } y h3 { font-size: 1.17rem; margin: 1em 0 } en styles.css, que carga después de Bootstrap y gana por orden en la cascada.
+
+Conflicto 2: colores de marca en las utilidades de Bootstrap**
+- Conflicto: text-success usa la variable --bs-success-rgb (25, 135, 84), que no es el verde de marca (#1E7A4F). Lo mismo ocurre con secondary, warning y dark.
+- Solución: redefiní en :root de styles.css las variables --bs-success-rgb, --bs-warning-rgb, --bs-dark-rgb y --bs-secondary-rgb con los colores de marca.
+
+Conflicto 3: .tarjeta contra las columnas .col-***
+- Conflicto: .tarjeta tenía width: 100%, margin-bottom y padding. En el mismo elemento que .col-lg-4, el width anula el ancho de la columna y el padding anula la separación entre columnas.
+- Solución: separé los dos papeles (article.col-* para la columna y section.tarjeta adentro para la caja visual) y quité width y margin-bottom de .tarjeta.
+
+
+## Comparativa final
+
+**Líneas de styles.css**
+- v1.5 (CSS propio): 618 líneas 
+- v2.0-beta (Bootstrap): 392 líneas
+- Reducción: 226 líneas 
+
+**Tiempo invertido en cada versión**
+- v1.5 (CSS propio): 7 horas
+- v2.0-beta (Bootstrap): 4 y 30 horas
+
+**Ventajas observadas**
+- Menos CSS propio: se eliminó toda la distribución y quedaron solo las reglas de identidad visual.
+- Los cortes de pantalla ya vienen resueltos, sin escribir media queries: pasar la flota de 3 a 4 columnas fue cambiar una clase.
+- Las tres páginas comparten la misma base de header, menú y footer.
+
+**Desventajas observadas**
+- El HTML tiene más clases y más elementos envolventes (container, row, col).
+- Los cortes de pantalla los fija Bootstrap, no yo.
+- Depende de un archivo externo (CDN).
+- El estilo base de Bootstrap cambió elementos nativos (títulos, legend de los fieldset, caption de las tablas) y hubo que corregirlos.
+
+**Conclusión**
+**Conclusión**
+Bootstrap sí redujo el trabajo. styles.css pasó de 618 a 392 líneas porque dejé de escribir la distribución: las columnas, las separaciones y los cortes de pantalla ya vienen definidos en sus clases. Cambiar el diseño pasó a ser cambiar una clase en el HTML. El costo fue resolver cinco conflictos con mis estilos y un HTML con más clases, pero el balance es favorable: menos CSS que mantener y una base común para las tres páginas.
