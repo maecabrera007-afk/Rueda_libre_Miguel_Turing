@@ -15,8 +15,6 @@
     --espacio-l: 2rem;
 }
 
-/* Colores de marca dentro de Bootstrap: text-success, bg-warning, text-secondary...
-   leen estas variables. Se redefinen aquí (esta hoja carga después), sin forzar la cascada. */
 :root {
     --bs-success-rgb: 30, 122, 79;     /* verde-ruta     #1E7A4F */
     --bs-warning-rgb: 243, 154, 43;    /* naranja-pedal  #F39A2B */
@@ -42,7 +40,6 @@ h1 {
     font-size: 1.6rem;
 }
 
-/* Bootstrap redefine tamaño y márgenes de los títulos; aquí vuelven a los valores de la marca. */
 h2 {
     font-size: 1.5rem;
     margin: 0.83em 0;
@@ -57,7 +54,6 @@ strong, th {
     font-weight: 600;
 }
 
-/* Imágenes fluidas: nunca más anchas que su contenedor */
 img {
     display: block;
     max-width: 100%;
@@ -69,7 +65,6 @@ a {
     text-decoration: underline;
 }
 
-/* Solo enlaces de texto: si no, el foco pinta de azul el texto de los botones .btn */
 a:not(.btn):hover,
 a:not(.btn):focus {
     color: var(--azul-noche);
@@ -97,7 +92,7 @@ small {
 }
 
 
-/* ---------- HEADER Y MENÚ (la distribución va con utilidades en el HTML) ---------- */
+/* ---------- HEADER Y MENÚ  ---------- */
 
 header {
     color: var(--blanco);
@@ -127,7 +122,6 @@ header a:focus {
     margin: 0;
 }
 
-/* Navbar de Bootstrap: píldoras de marca para los enlaces */
 .navbar .navbar-nav .nav-link {
     padding: 0.45rem 1rem;
     font-family: var(--fuente-titulos);
@@ -159,8 +153,7 @@ footer {
 }
 
 
-/* ---------- BOTONES (Bootstrap .btn con colores de marca) ---------- */
-/* Relleno = reservar. Contorno = consultar o contactar. */
+/* ---------- BOTONES  ---------- */
 
 .btn-success {
     --bs-btn-bg: var(--verde-ruta);
@@ -199,7 +192,6 @@ footer {
     margin-top: var(--espacio-s);
 }
 
-/* Cards de Bootstrap (flota y recorridos) con los colores y el borde de la marca */
 .card {
     --bs-card-border-width: 2px;
     --bs-card-border-color: var(--gris-asfalto);
@@ -232,7 +224,6 @@ footer {
     object-fit: cover;
 }
 
-/* Bootstrap quita el contorno de foco de los controles; se devuelve para el teclado. */
 .carousel-control-prev:focus-visible,
 .carousel-control-next:focus-visible {
     outline: 0.1875rem solid var(--naranja-pedal);
@@ -249,7 +240,6 @@ table {
     font-size: 0.8rem;
 }
 
-/* Bootstrap manda el título de la tabla abajo y lo pinta gris: se devuelve a la marca. */
 caption {
     caption-side: top;
     padding: var(--espacio-s) 0;
@@ -281,7 +271,6 @@ fieldset {
     min-width: 0;
 }
 
-/* Bootstrap flota la leyenda a todo el ancho: se devuelve al borde del fieldset. */
 legend {
     float: none;
     width: auto;
@@ -350,7 +339,7 @@ fieldset small {
 }
 
 
-/* ---------- ACCESIBILIDAD (estado de foco) ---------- */
+/* ---------- ACCESIBILIDAD ---------- */
 
 :focus-visible {
     outline: 0.1875rem solid var(--azul-noche);
@@ -362,7 +351,7 @@ header :focus-visible {
 }
 
 
-/* ---------- DESDE 768px: solo tipografía y tablas ---------- */
+/* ---------- solo tipografía y tablas ---------- */
 
 @media (min-width: 768px) {
 
