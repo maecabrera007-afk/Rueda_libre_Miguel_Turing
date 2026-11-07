@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kit de componentes · Rueda Nocturna</title>
+  <link rel="stylesheet" href="src/output.css" />
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+
+  <main class="mx-auto w-full max-w-3xl space-y-16 px-6 py-16">
+
+    <header class="space-y-3">
+      <h1 class="text-4xl font-extrabold leading-tight tracking-tight text-white">Kit de componentes</h1>
+      <p class="max-w-xl text-base leading-relaxed text-slate-300">
+        Botones, card, alertas y campos de formulario de Rueda Nocturna, reunidos para revisar su consistencia.
+      </p>
+    </header>
+
+    <!-- BOTONES -->
+    <section id="botones" class="space-y-6">
+      <h2 class="border-b border-slate-800 pb-3 text-2xl font-bold text-white">Botones</h2>
+      <div class="flex flex-wrap gap-4">
+        <a href="#botones"
+           class="inline-block rounded-lg bg-amber-400 px-8 py-3 text-base font-semibold text-slate-950 shadow-lg shadow-amber-400/20 hover:bg-amber-300 focus:outline-none focus:ring-4 focus:ring-amber-200 focus:ring-offset-2 focus:ring-offset-slate-950">
+          Principal
+        </a>
+        <a href="#botones"
+           class="inline-block rounded-lg bg-slate-800 px-8 py-3 text-base font-semibold text-slate-100 shadow-md hover:bg-slate-700 focus:outline-none focus:ring-4 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-950">
+          Secundario
+        </a>
+        <a href="#botones"
+           class="inline-block rounded-lg border-2 border-amber-400 px-8 py-3 text-base font-semibold text-amber-300 hover:bg-amber-400/10 focus:outline-none focus:ring-4 focus:ring-amber-300 focus:ring-offset-2 focus:ring-offset-slate-950">
+          Contorno
+        </a>
+      </div>
+    </section>
+
+    <!-- CARD -->
+    <section id="card" class="space-y-6">
+      <h2 class="border-b border-slate-800 pb-3 text-2xl font-bold text-white">Card</h2>
+
+      <article class="flex w-full max-w-md flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-md transition hover:border-amber-400 hover:shadow-xl hover:shadow-amber-400/10">
+        <img src="/img/Gemini_Generated_Image_48bai148bai148ba.jpg" alt="Ciclistas recorriendo el centro de Medellín de noche" class="h-48 w-full bg-slate-800 object-cover" />
+
+        <div class="flex flex-1 flex-col space-y-4 p-6">
+          <span class="inline-block w-fit rounded-full bg-emerald-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-300">
+            Nivel: Fácil
+          </span>
+
+          <h3 class="text-2xl font-bold leading-snug text-white">Luces del Centro</h3>
+
+          <dl class="space-y-3">
+            <div class="flex items-baseline justify-between gap-4">
+              <dt class="text-sm text-slate-400">Distancia</dt>
+              <dd class="text-base font-semibold text-slate-100">10 km</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4">
+              <dt class="text-sm text-slate-400">Duración</dt>
+              <dd class="text-base font-semibold text-slate-100">2 h</dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4">
+              <dt class="text-sm text-slate-400">Punto de encuentro</dt>
+              <dd class="text-base font-semibold text-slate-100">Sede de Rueda Libre</dd>
+            </div>
+          </dl>
+
+          <p class="text-3xl font-extrabold text-amber-300">$55.000</p>
+
+          <a href="#card"
+             class="inline-block rounded-lg bg-amber-400 px-8 py-3 text-center text-base font-semibold text-slate-950 shadow-lg shadow-amber-400/20 hover:bg-amber-300 focus:outline-none focus:ring-4 focus:ring-amber-200 focus:ring-offset-2 focus:ring-offset-slate-900">
+            Inscríbete
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <!-- ALERTAS -->
+    <section id="alertas" class="space-y-6">
+      <h2 class="border-b border-slate-800 pb-3 text-2xl font-bold text-white">Alertas</h2>
+
+      <div class="space-y-4">
+        <!-- Información -->
+        <div class="space-y-1 rounded-lg border-l-4 border-sky-400 bg-sky-400/10 p-4">
+          <p class="text-base font-semibold text-sky-300">Información</p>
+          <p class="text-sm leading-relaxed text-slate-300">Las salidas son de jueves a sábado y empiezan al caer la tarde.</p>
+        </div>
+
+        <!-- Éxito: role="status" lo anuncia como aviso a los lectores de pantalla -->
+        <div role="status" class="space-y-1 rounded-lg border-l-4 border-emerald-400 bg-emerald-400/10 p-4">
+          <p class="text-base font-semibold text-emerald-300">Inscripción confirmada</p>
+          <p class="text-sm leading-relaxed text-slate-300">Te esperamos en la sede de Rueda Libre con tu casco y tus luces listas.</p>
+        </div>
+
+        <!-- Advertencia -->
+        <div class="space-y-1 rounded-lg border-l-4 border-amber-400 bg-amber-400/10 p-4">
+          <p class="text-base font-semibold text-amber-300">Advertencia</p>
+          <p class="text-sm leading-relaxed text-slate-300">Si llueve, la salida puede reprogramarse. Revisa tu correo antes de salir.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAMPOS DE FORMULARIO -->
+    <section id="formulario" class="space-y-6">
+      <h2 class="border-b border-slate-800 pb-3 text-2xl font-bold text-white">Formulario</h2>
+
+      <div class="max-w-md space-y-6">
+        <div class="space-y-2">
+          <label for="correo" class="block text-sm font-semibold text-slate-100">Correo electrónico</label>
+          <input id="correo" name="correo" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com"
+                 aria-describedby="correo-ayuda"
+                 class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-base text-slate-100 placeholder:text-slate-400 hover:border-slate-500 focus:border-amber-400 focus:outline-none focus:ring-4 focus:ring-amber-300 focus:ring-offset-2 focus:ring-offset-slate-950" />
+          <p id="correo-ayuda" class="text-sm text-slate-400">Aquí te enviaremos la confirmación de tu inscripción.</p>
+        </div>
+
+        <div class="space-y-2">
+          <label for="celular" class="block text-sm font-semibold text-slate-100">Celular</label>
+          <input id="celular" name="celular" type="tel" inputmode="numeric" autocomplete="tel" placeholder="300 123 4567"
+                 aria-describedby="celular-ayuda"
+                 class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-base text-slate-100 placeholder:text-slate-400 hover:border-slate-500 focus:border-amber-400 focus:outline-none focus:ring-4 focus:ring-amber-300 focus:ring-offset-2 focus:ring-offset-slate-950" />
+          <p id="celular-ayuda" class="text-sm text-slate-400">Solo números, sin el indicativo del país.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
