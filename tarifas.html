@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <!-- 1) Bootstrap primero -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
         <nav class="navbar navbar-expand-lg" data-bs-theme="dark" aria-label="Principal">
             <section class="container-fluid px-3 px-md-4">
 
-                <a class="navbar-brand marca" href="index.html">Rueda Libre</a>
+                <a class="navbar-brand marca" href="index.html"><i class="bi bi-bicycle me-2" aria-hidden="true"></i>Rueda Libre</a>
 
                 <button class="navbar-toggler" type="button"
                         data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
@@ -30,15 +30,15 @@
 
                 <section class="collapse navbar-collapse justify-content-lg-end" id="menuPrincipal">
                     <ul class="navbar-nav gap-lg-1">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="tarifas.html">Tarifas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="reservas.html">Reservas</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="bi bi-house me-1" aria-hidden="true"></i>Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="tarifas.html"><i class="bi bi-tags me-1" aria-hidden="true"></i>Tarifas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reservas.html"><i class="bi bi-calendar-check me-1" aria-hidden="true"></i>Reservas</a>
+                    </li>
                     </ul>
                 </section>
 
@@ -53,7 +53,7 @@
 
             <section class="col-12 col-lg-8">
                 <section aria-labelledby="titulo-precios">
-                    <h2 id="titulo-precios">Precios de alquiler</h2>
+                    <h2 id="titulo-precios" class="titulo-seccion">Precios de alquiler</h2>
                     <table>
                         <caption>Tabla de precios de alquiler</caption>
                         <thead>
@@ -88,7 +88,7 @@
                 </section>
 
                 <section aria-labelledby="titulo-recorridos">
-                    <h2 id="titulo-recorridos">Recorridos</h2>
+                    <h2 id="titulo-recorridos" class="titulo-seccion">Recorridos</h2>
                     <table>
                         <caption>Tabla de información de los recorridos</caption>
                         <thead>
@@ -132,22 +132,22 @@
                     <h2 class="mt-0">Información importante</h2>
                     <p>Nota: Los precios incluyen casco y candado.No olviden llevar hidratación | Todos los recorridos salen los sabados a las 8:00 AM.</p>
                     <p>Nota: Los precios pueden variar según la temporada y la disponibilidad de bicicletas.</p>
-                    <a href="reservas.html" class="boton-cta">Reservar una bicicleta</a>
+                    <a href="reservas.html" class="btn btn-primary">Reservar una bicicleta</a>
                 </section>
             </aside>
 
         </section>
     </main>
 
-    <footer class="container py-3 text-center text-md-start">
+    <footer class="pie container py-3 mt-4 text-center text-md-start">
         <section class="row g-3">
             <p class="col-12 col-md mb-0">&copy; 2026 Rueda Libre. Todos los derechos reservados.</p>
-            <p class="col-12 col-md mb-0"><a href="mailto:info@ruedalibre.com">Contacto por correo</a></p>
-            <p class="col-12 col-md mb-0"><a href="reservas.html#horarios">Horarios de atención</a></p>
+            <p class="col-12 col-md mb-0"><i class="bi bi-envelope me-2" aria-hidden="true"></i><a href="mailto:info@ruedalibre.com">Contacto por correo</a></p>
+            <p class="col-12 col-md mb-0"><i class="bi bi-clock me-2" aria-hidden="true"></i><a href="reservas.html#horarios">Horarios de atención</a></p>
         </section>
     </footer>
 
-    <a href="https://wa.me/573000000000" class="boton-cta whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (se abre en una pestaña nueva)">WhatsApp</a>
+    <a href="https://wa.me/573000000000" class="btn btn-primary btn-lg rounded-circle p-3 lh-1 position-fixed bottom-0 end-0 m-3 z-3 shadow whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (se abre en una pestaña nueva)"><i class="bi bi-whatsapp fs-4" aria-hidden="true"></i></a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

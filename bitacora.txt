@@ -305,3 +305,13 @@ Conflicto 3: .tarjeta contra las columnas .col-***
 **Conclusión**
 **Conclusión**
 Bootstrap sí redujo el trabajo. styles.css pasó de 618 a 392 líneas porque dejé de escribir la distribución: las columnas, las separaciones y los cortes de pantalla ya vienen definidos en sus clases. Cambiar el diseño pasó a ser cambiar una clase en el HTML. El costo fue resolver cinco conflictos con mis estilos y un HTML con más clases, pero el balance es favorable: menos CSS que mantener y una base común para las tres páginas.
+
+
+Resumen semana 2
+ Migré inicio, tarifas y reservas a Bootstrap 5.3 con la grilla (container > row > col) y utilidades.
+- Navbar responsive (navbar-expand-lg): enlaces visibles desde 992 px y botón de menú por debajo; página actual con active y aria-current.
+- Botones btn con variantes coherentes: relleno para reservar, contorno para consultar o contactar.
+- Flota y rutas como cards con la misma altura por fila; carrusel con las tres promociones del mes.
+- Formulario de reservas con validación visual de Bootstrap, mensajes por campo, alerta cerrable y modal de políticas.
+- Personalización con la identidad de marca: variables, variante propia de botón, clases propias e íconos.
+
