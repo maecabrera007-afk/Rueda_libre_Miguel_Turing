@@ -320,3 +320,7 @@ Resumen semana 2
 
 Semana_3
 En la semana 2, con Bootstrap, hacía el botón escribiendo la etiqueta (<a> o <button>) y poniéndole la clase btn; con eso ya se veía como botón, y después le sumaba otras clases según lo que necesitara, como btn-primary para el color, btn-outline-primary para la versión con contorno o btn-sm para hacerlo pequeño (por ejemplo, <a href="reservas.html" class="btn btn-primary btn-sm mt-auto">Reservar</a>). Hoy, con Tailwind, no existe una clase btn, así que armé el botón pieza por pieza con utilidades: bg-amber-400 para el fondo, px-8 py-3 para el relleno, rounded-lg para las esquinas y font-semibold para la letra, lo que da una lista de clases más larga pero donde sé qué hace cada una. La diferencia clave es que Bootstrap es un framework de componentes, que me entrega el botón ya diseñado para que yo lo ajuste, mientras que Tailwind es utility-first y me da piezas pequeñas para construir el diseño directamente en el HTML.
+
+
+Busqué en output.css la clase bg-amber-400, que uso, y apareció; bg-pink-500, que no uso, no apareció. Pasa porque la CLI de Tailwind lee mis archivos, detecta qué clases escribí y genera solo el CSS de esas, no todo el catálogo.
+
