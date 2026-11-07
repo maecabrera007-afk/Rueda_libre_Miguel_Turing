@@ -10,30 +10,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <!-- 1) Bootstrap primero -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <!-- 2) Mi hoja después: en empate de especificidad, gana la última -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <a href="#contenido" class="saltar">Saltar al contenido principal</a>
 
-    <!-- Header: columna en móvil, fila desde md (utilidades de flex) -->
-    <header class="portada d-flex flex-column flex-md-row flex-md-wrap justify-content-md-between align-items-center gap-2 gap-md-3 px-3 px-md-4 py-2 text-center text-md-start">
-        <p class="marca">Rueda Libre</p>
+    <header class="portada">
+        <nav class="navbar navbar-expand-lg" data-bs-theme="dark" aria-label="Principal">
+            <section class="container-fluid px-3 px-md-4">
 
-        <nav aria-label="Principal">
-            <ul id="menu" class="list-unstyled d-flex flex-wrap justify-content-center justify-content-md-end gap-1 mb-0">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="tarifas.html" class="activo" aria-current="page">Tarifas</a></li>
-                <li><a href="reservas.html">Reservas</a></li>
-            </ul>
+                <a class="navbar-brand marca" href="index.html">Rueda Libre</a>
+
+                <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                        aria-controls="menuPrincipal" aria-expanded="false"
+                        aria-label="Abrir o cerrar el menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <section class="collapse navbar-collapse justify-content-lg-end" id="menuPrincipal">
+                    <ul class="navbar-nav gap-lg-1">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="tarifas.html">Tarifas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reservas.html">Reservas</a>
+                        </li>
+                    </ul>
+                </section>
+
+            </section>
         </nav>
-
     </header>
 
     <main id="contenido" class="container py-3">
         <h1>Nuestra tabla de precios</h1>
 
-        <!-- Dos columnas desde lg: tablas (8) + información complementaria (4) -->
         <section class="row g-4">
 
             <section class="col-12 col-lg-8">
