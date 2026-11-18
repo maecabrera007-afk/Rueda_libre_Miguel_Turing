@@ -324,3 +324,21 @@ En la semana 2, con Bootstrap, hacía el botón escribiendo la etiqueta (<a> o <
 
 Busqué en output.css la clase bg-amber-400, que uso, y apareció; bg-pink-500, que no uso, no apareció. Pasa porque la CLI de Tailwind lee mis archivos, detecta qué clases escribí y genera solo el CSS de esas, no todo el catálogo.
 
+## Adaptación Mobile-First y Semántica - Landing Rueda Nocturna
+
+### 1. Diagnóstico inicial a 360 px (Elementos rotos antes de refactorizar)
+- **Scroll horizontal general:** La página desbordaba los 360 px por contenedores fijos de escritorio.
+- **Encabezado (Header):** Elementos en línea sin salto de línea en pantallas pequeñas.
+- **Sección Rutas:** Grilla fija de 3 columnas que aplastaba el contenido en móvil.
+- **Sección ¿Cómo funciona?:** Grilla fija de 4 columnas ilegible en pantallas compactas.
+- **Sección Inscripción:** Contenedor de formulario e inputs en fila que desbordaban el ancho de pantalla.
+- **Tipografía y espaciados:** Tamaños excesivos para visualización móvil.
+
+### 2. Tabla de pruebas en modo dispositivo (DevTools)
+
+| Ancho de pantalla | Comportamiento observado | Scroll horizontal | Estado |
+| :--- | :--- | :---: | :---: |
+| **360 px** (Móvil) | Navegación apilada, enlaces principales ocultos (`hidden`), botón "Inscríbete" visible. Rutas, pasos e inputs en 1 columna. | No | Cumple |
+| **768 px** (Tablet) | Navegación horizontal visible (`md:flex`), rutas en 2 columnas (`sm:grid-cols-2`), pasos en 2 columnas, formulario en fila (`sm:flex-row`). | No | Cumple |
+| **1024 px** (Laptop) | Rutas pasan a 3 columnas (`lg:grid-cols-3`), pasos pasan a 4 columnas (`lg:grid-cols-4`), tipografía escalada. | No | Cumple |
+| **1280 px** (Escritorio) | Contenedor centrado (`max-w-6xl`), espaciados amplios y distribución completa sin deformaciones. | No | Cumple |
