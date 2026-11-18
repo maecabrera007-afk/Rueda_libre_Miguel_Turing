@@ -1,117 +1,261 @@
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Kit de componentes · Rueda Nocturna</title>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CSS -->
   <link rel="stylesheet" href="src/output.css" />
 </head>
+
 <body class="min-h-screen bg-crema font-texto text-azul-noche antialiased dark:bg-azul-noche dark:text-crema">
 
   <main class="mx-auto w-full max-w-3xl space-y-16 px-4 py-12 sm:px-6 md:py-16">
 
+    <!-- ENCABEZADO -->
     <header class="space-y-3">
-      <h1 class="font-titulos text-3xl font-extrabold leading-tight tracking-tight text-azul-noche sm:text-4xl dark:text-crema">Kit de componentes</h1>
-      <p class="max-w-xl text-base leading-relaxed text-gris-asfalto dark:text-crema">
-        Botones, card, alertas y campos de formulario de Rueda Nocturna, reunidos para revisar su consistencia.
+
+      <h1 class="font-titulos text-3xl font-extrabold leading-tight tracking-tight text-azul-noche sm:text-4xl dark:text-crema">
+        Kit de componentes
+      </h1>
+
+      <p class="max-w-xl text-base leading-relaxed text-gris-asfalto dark:text-crema/80">
+        Botones, cards, alertas y campos de formulario de Rueda Nocturna, reunidos para revisar su consistencia.
       </p>
+
     </header>
 
+
+    <!-- BOTONES -->
     <section id="botones" class="space-y-6">
-      <h2 class="border-b border-azul-noche/15 pb-3 font-titulos text-2xl font-bold text-azul-noche dark:border-white/15 dark:text-crema">Botones</h2>
+
+      <h2 class="border-b border-azul-noche/15 pb-3 font-titulos text-2xl font-bold text-azul-noche dark:border-crema/20 dark:text-crema">
+        Botones
+      </h2>
+
       <div class="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+
         <a href="#botones" class="btn-primario">
           Principal
         </a>
+
         <a href="#botones" class="btn-secundario">
           Secundario
         </a>
+
         <a href="#botones" class="btn-contorno">
           Contorno
         </a>
+
       </div>
+
     </section>
 
+
+    <!-- CARD -->
     <section id="card" class="space-y-6">
-      <h2 class="border-b border-azul-noche/15 pb-3 font-titulos text-2xl font-bold text-azul-noche dark:border-white/15 dark:text-crema">Card</h2>
 
-      <article class="flex w-full max-w-md flex-col overflow-hidden rounded-2xl border border-azul-noche/15 bg-white shadow-md transition dark:border-white/15 dark:bg-white/5 hover:border-verde-ruta hover:shadow-xl dark:hover:border-amarillo-farol">
-          <img src="../img/Gemini_Generated_Image_48bai148bai148ba.jpg" alt="Ciclistas recorriendo el centro de Medellín de noche" loading="lazy" class="h-48 w-full bg-gris-asfalto object-cover" />
+      <h2 class="border-b border-azul-noche/15 pb-3 font-titulos text-2xl font-bold text-azul-noche dark:border-crema/20 dark:text-crema">
+        Card
+      </h2>
 
-          <div class="flex flex-1 flex-col space-y-4 p-6">
-            <span class="inline-block w-fit rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider bg-verde-ruta text-white">
-              Nivel: Fácil
-            </span>
+      <article class="flex w-full max-w-md flex-col overflow-hidden rounded-2xl border border-azul-noche/15 bg-white shadow-md transition dark:border-crema/20 dark:bg-white/5 hover:border-verde-ruta dark:hover:border-amarillo-farol hover:shadow-xl">
 
-            <h3 class="font-titulos text-2xl font-bold leading-snug text-azul-noche dark:text-crema">Luces del Centro</h3>
+        <img
+          src="../img/Gemini_Generated_Image_48bai148bai148ba.jpg"
+          alt="Ciclistas recorriendo el centro de Medellín de noche"
+          loading="lazy"
+          class="h-48 w-full bg-gris-asfalto object-cover"
+        />
 
-            <dl class="space-y-3">
-              <div class="flex items-baseline justify-between gap-4">
-                <dt class="text-sm text-gris-asfalto dark:text-crema/80">Distancia</dt>
-                <dd class="text-base font-semibold text-azul-noche dark:text-crema">10 km</dd>
-              </div>
-              <div class="flex items-baseline justify-between gap-4">
-                <dt class="text-sm text-gris-asfalto dark:text-crema/80">Duración</dt>
-                <dd class="text-base font-semibold text-azul-noche dark:text-crema">2 h</dd>
-              </div>
-              <div class="flex items-baseline justify-between gap-4">
-                <dt class="text-sm text-gris-asfalto dark:text-crema/80">Punto de encuentro</dt>
-                <dd class="text-base font-semibold text-azul-noche dark:text-crema">Sede de Rueda Libre</dd>
-              </div>
-            </dl>
+        <div class="flex flex-1 flex-col space-y-4 p-6">
 
-            <p class="font-titulos text-3xl font-extrabold text-verde-ruta dark:text-amarillo-farol">$55.000</p>
+          <span class="inline-block w-fit rounded-full bg-verde-ruta px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
+            Nivel: Fácil
+          </span>
 
-            <a href="#card" class="btn-primario">
-              Inscríbete
-            </a>
-          </div>
-        </article>
+          <h3 class="font-titulos text-2xl font-bold leading-snug text-azul-noche dark:text-crema">
+            Luces del Centro
+          </h3>
+
+          <dl class="space-y-3">
+
+            <div class="flex items-baseline justify-between gap-4">
+              <dt class="text-sm text-gris-asfalto dark:text-crema/80">
+                Distancia
+              </dt>
+
+              <dd class="text-base font-semibold text-azul-noche dark:text-crema">
+                10 km
+              </dd>
+            </div>
+
+            <div class="flex items-baseline justify-between gap-4">
+              <dt class="text-sm text-gris-asfalto dark:text-crema/80">
+                Duración
+              </dt>
+
+              <dd class="text-base font-semibold text-azul-noche dark:text-crema">
+                2 h
+              </dd>
+            </div>
+
+            <div class="flex items-baseline justify-between gap-4">
+              <dt class="text-sm text-gris-asfalto dark:text-crema/80">
+                Punto de encuentro
+              </dt>
+
+              <dd class="text-base font-semibold text-azul-noche dark:text-crema">
+                Sede de Rueda Libre
+              </dd>
+            </div>
+
+          </dl>
+
+          <p class="font-titulos text-3xl font-extrabold text-verde-ruta dark:text-amarillo-farol">
+            $55.000
+          </p>
+
+          <a href="#card" class="btn-primario">
+            Inscríbete
+          </a>
+
+        </div>
+      </article>
+
     </section>
 
+
+    <!-- ALERTAS -->
     <section id="alertas" class="space-y-6">
-      <h2 class="border-b border-azul-noche/15 pb-3 font-titulos text-2xl font-bold text-azul-noche dark:border-white/15 dark:text-crema">Alertas</h2>
+
+      <h2 class="border-b border-azul-noche/15 pb-3 font-titulos text-2xl font-bold text-azul-noche dark:border-crema/20 dark:text-crema">
+        Alertas
+      </h2>
 
       <div class="space-y-4">
+
+        <!-- Información -->
         <div class="space-y-1 rounded-lg border-l-4 border-gris-asfalto bg-azul-noche/10 p-4 dark:border-crema dark:bg-white/10">
-          <p class="text-base font-semibold text-azul-noche dark:text-crema">Información</p>
-          <p class="text-sm leading-relaxed text-azul-noche dark:text-crema">Las salidas son de jueves a sábado y empiezan al caer la tarde.</p>
+
+          <p class="text-base font-semibold text-azul-noche dark:text-crema">
+            Información
+          </p>
+
+          <p class="text-sm leading-relaxed text-azul-noche dark:text-crema">
+            Las salidas son de jueves a sábado y empiezan al caer la tarde.
+          </p>
+
         </div>
 
-        <div role="status" class="space-y-1 rounded-lg border-l-4 border-verde-ruta bg-verde-ruta/10 p-4 dark:bg-white/10">
-          <p class="text-base font-semibold text-azul-noche dark:text-crema">Inscripción confirmada</p>
-          <p class="text-sm leading-relaxed text-azul-noche dark:text-crema">Te esperamos en la sede de Rueda Libre con tu casco y tus luces listas.</p>
+
+        <!-- Confirmación -->
+        <div role="status" class="space-y-1 rounded-lg border-l-4 border-verde-ruta bg-verde-ruta/10 p-4 dark:border-amarillo-farol dark:bg-white/10">
+
+          <p class="text-base font-semibold text-azul-noche dark:text-crema">
+            Inscripción confirmada
+          </p>
+
+          <p class="text-sm leading-relaxed text-azul-noche dark:text-crema">
+            Te esperamos en la sede de Rueda Libre con tu casco y tus luces listas.
+          </p>
+
         </div>
 
-        <div class="space-y-1 rounded-lg border-l-4 border-naranja-pedal bg-naranja-pedal/10 p-4 dark:bg-white/10">
-          <p class="text-base font-semibold text-azul-noche dark:text-crema">Advertencia</p>
-          <p class="text-sm leading-relaxed text-azul-noche dark:text-crema">Si llueve, la salida puede reprogramarse. Revisa tu correo antes de salir.</p>
+
+        <!-- Advertencia -->
+        <div class="space-y-1 rounded-lg border-l-4 border-naranja-pedal bg-naranja-pedal/10 p-4 dark:border-amarillo-farol dark:bg-white/10">
+
+          <p class="text-base font-semibold text-azul-noche dark:text-crema">
+            Advertencia
+          </p>
+
+          <p class="text-sm leading-relaxed text-azul-noche dark:text-crema">
+            Si llueve, la salida puede reprogramarse. Revisa tu correo antes de salir.
+          </p>
+
         </div>
+
       </div>
     </section>
 
+
+    <!-- FORMULARIO -->
     <section id="formulario" class="space-y-6">
-      <h2 class="border-b border-azul-noche/15 pb-3 font-titulos text-2xl font-bold text-azul-noche dark:border-white/15 dark:text-crema">Formulario</h2>
+
+      <h2 class="border-b border-azul-noche/15 pb-3 font-titulos text-2xl font-bold text-azul-noche dark:border-crema/20 dark:text-crema">
+        Formulario
+      </h2>
 
       <div class="max-w-md space-y-6">
+
+        <!-- CORREO -->
         <div class="space-y-2">
-          <label for="correo" class="block text-sm font-semibold text-azul-noche dark:text-crema">Correo electrónico</label>
-          <input id="correo" name="correo" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com"
-                 aria-describedby="correo-ayuda"
-                 class="w-full rounded-lg border border-gris-asfalto bg-white px-4 py-3 text-base text-azul-noche placeholder:text-gris-asfalto dark:border-crema/60 dark:bg-white/5 dark:text-crema dark:placeholder:text-crema/70 hover:border-azul-noche focus:border-verde-ruta dark:hover:border-crema dark:focus:border-amarillo-farol focus:outline-none focus:ring-4 focus:ring-amarillo-farol focus:ring-offset-2 focus:ring-offset-azul-noche" />
-          <p id="correo-ayuda" class="text-sm text-gris-asfalto dark:text-crema/80">Aquí te enviaremos la confirmación de tu inscripción.</p>
+
+          <label
+            for="correo"
+            class="block text-sm font-semibold text-azul-noche dark:text-crema"
+          >
+            Correo electrónico
+          </label>
+
+          <input
+            id="correo"
+            name="correo"
+            type="email"
+            autocomplete="email"
+            placeholder="tucorreo@ejemplo.com"
+            aria-describedby="correo-ayuda"
+            class="w-full rounded-lg border border-gris-asfalto bg-white px-4 py-3 text-base text-azul-noche placeholder:text-gris-asfalto dark:border-crema/60 dark:bg-white/5 dark:text-crema dark:placeholder:text-crema/70 hover:border-azul-noche dark:hover:border-crema focus:border-verde-ruta dark:focus:border-amarillo-farol focus:outline-none focus:ring-4 focus:ring-amarillo-farol focus:ring-offset-2 focus:ring-offset-crema dark:focus:ring-offset-azul-noche"
+          />
+
+          <p id="correo-ayuda" class="text-sm text-gris-asfalto dark:text-crema/80">
+            Aquí te enviaremos la confirmación de tu inscripción.
+          </p>
+
         </div>
 
+
+        <!-- CELULAR -->
         <div class="space-y-2">
-          <label for="celular" class="block text-sm font-semibold text-azul-noche dark:text-crema">Celular</label>
-          <input id="celular" name="celular" type="tel" inputmode="numeric" autocomplete="tel" placeholder="300 123 4567"
-                 aria-describedby="celular-ayuda"
-                 class="w-full rounded-lg border border-gris-asfalto bg-white px-4 py-3 text-base text-azul-noche placeholder:text-gris-asfalto dark:border-crema/60 dark:bg-white/5 dark:text-crema dark:placeholder:text-crema/70 hover:border-azul-noche focus:border-verde-ruta dark:hover:border-crema dark:focus:border-amarillo-farol focus:outline-none focus:ring-4 focus:ring-amarillo-farol focus:ring-offset-2 focus:ring-offset-azul-noche" />
-          <p id="celular-ayuda" class="text-sm text-gris-asfalto dark:text-crema/80">Solo números, sin el indicativo del país.</p>
+
+          <label
+            for="celular"
+            class="block text-sm font-semibold text-azul-noche dark:text-crema"
+          >
+            Celular
+          </label>
+
+          <input
+            id="celular"
+            name="celular"
+            type="tel"
+            inputmode="numeric"
+            autocomplete="tel"
+            placeholder="300 123 4567"
+            aria-describedby="celular-ayuda"
+            class="w-full rounded-lg border border-gris-asfalto bg-white px-4 py-3 text-base text-azul-noche placeholder:text-gris-asfalto dark:border-crema/60 dark:bg-white/5 dark:text-crema dark:placeholder:text-crema/70 hover:border-azul-noche dark:hover:border-crema focus:border-verde-ruta dark:focus:border-amarillo-farol focus:outline-none focus:ring-4 focus:ring-amarillo-farol focus:ring-offset-2 focus:ring-offset-crema dark:focus:ring-offset-azul-noche"
+          />
+
+          <p id="celular-ayuda" class="text-sm text-gris-asfalto dark:text-crema/80">
+            Solo números, sin el indicativo del país.
+          </p>
+
         </div>
+
       </div>
     </section>
 

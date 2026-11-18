@@ -1,3 +1,27 @@
-
 @import "tailwindcss";
 
+@theme {
+  --color-azul-noche: #14213D;
+  --color-crema: #F8F5E9;
+  --color-gris-asfalto: #59636E;
+  --color-verde-ruta: #176B52;
+  --color-naranja-pedal: #C65D18;
+  --color-amarillo-farol: #FFD166;
+
+  --font-titulos: "Montserrat", sans-serif;
+  --font-texto: "Open Sans", sans-serif;
+}
+
+@layer components {
+  .btn-primario {
+    @apply inline-block rounded-lg bg-amarillo-farol px-6 py-3 text-center font-semibold text-azul-noche shadow-lg transition hover:bg-amarillo-farol focus:outline-none focus:ring-4 focus:ring-amarillo-farol focus:ring-offset-2 focus:ring-offset-crema dark:focus:ring-offset-azul-noche;
+  }
+
+  .btn-secundario {
+    @apply inline-block rounded-lg bg-azul-noche px-6 py-3 text-center font-semibold text-crema transition hover:bg-gris-asfalto focus:outline-none focus:ring-4 focus:ring-verde-ruta focus:ring-offset-2 focus:ring-offset-crema dark:bg-crema/10 dark:text-crema dark:hover:bg-crema/20 dark:focus:ring-offset-azul-noche;
+  }
+
+  .btn-contorno {
+    @apply inline-block rounded-lg border-2 border-verde-ruta px-6 py-3 text-center font-semibold text-azul-noche transition hover:bg-verde-ruta hover:text-white focus:outline-none focus:ring-4 focus:ring-verde-ruta focus:ring-offset-2 focus:ring-offset-crema dark:border-amarillo-farol dark:text-amarillo-farol dark:hover:bg-amarillo-farol dark:hover:text-azul-noche dark:focus:ring-offset-azul-noche;
+  }
+}
