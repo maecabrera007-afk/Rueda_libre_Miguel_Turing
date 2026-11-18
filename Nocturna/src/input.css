@@ -12,16 +12,21 @@
   --font-texto: "Open Sans", sans-serif;
 }
 
+/*
+  Solo los botones tienen clase propia (3 en total): son un único elemento que
+  se repite 8 veces en la landing. El resto del marcado se queda con utilidades.
+  Orden de cada lista: layout, espaciado, tipografía, color y estados.
+*/
 @layer components {
   .btn-primario {
-    @apply inline-block rounded-lg bg-amarillo-farol px-6 py-3 text-center font-semibold text-azul-noche shadow-lg transition hover:bg-amarillo-farol focus:outline-none focus:ring-4 focus:ring-amarillo-farol focus:ring-offset-2 focus:ring-offset-crema dark:focus:ring-offset-azul-noche;
+    @apply inline-block px-6 py-3 sm:px-8 text-center text-base font-semibold rounded-lg bg-amarillo-farol text-azul-noche shadow-lg transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-ruta dark:focus-visible:outline-amarillo-farol;
   }
 
   .btn-secundario {
-    @apply inline-block rounded-lg bg-azul-noche px-6 py-3 text-center font-semibold text-crema transition hover:bg-gris-asfalto focus:outline-none focus:ring-4 focus:ring-verde-ruta focus:ring-offset-2 focus:ring-offset-crema dark:bg-crema/10 dark:text-crema dark:hover:bg-crema/20 dark:focus:ring-offset-azul-noche;
+    @apply inline-block px-6 py-3 sm:px-8 text-center text-base font-semibold rounded-lg bg-azul-noche text-crema dark:bg-crema/10 transition hover:bg-gris-asfalto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-ruta dark:hover:bg-crema/20 dark:focus-visible:outline-amarillo-farol;
   }
 
   .btn-contorno {
-    @apply inline-block rounded-lg border-2 border-verde-ruta px-6 py-3 text-center font-semibold text-azul-noche transition hover:bg-verde-ruta hover:text-white focus:outline-none focus:ring-4 focus:ring-verde-ruta focus:ring-offset-2 focus:ring-offset-crema dark:border-amarillo-farol dark:text-amarillo-farol dark:hover:bg-amarillo-farol dark:hover:text-azul-noche dark:focus:ring-offset-azul-noche;
+    @apply inline-block px-6 py-3 sm:px-8 text-center text-base font-semibold rounded-lg border-2 border-verde-ruta text-azul-noche dark:border-amarillo-farol dark:text-amarillo-farol transition hover:bg-verde-ruta hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-ruta dark:hover:bg-amarillo-farol dark:hover:text-azul-noche dark:focus-visible:outline-amarillo-farol;
   }
 }
