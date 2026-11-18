@@ -342,3 +342,136 @@ Busqué en output.css la clase bg-amber-400, que uso, y apareció; bg-pink-500, 
 | **768 px** (Tablet) | Navegación horizontal visible (`md:flex`), rutas en 2 columnas (`sm:grid-cols-2`), pasos en 2 columnas, formulario en fila (`sm:flex-row`). | No | Cumple |
 | **1024 px** (Laptop) | Rutas pasan a 3 columnas (`lg:grid-cols-3`), pasos pasan a 4 columnas (`lg:grid-cols-4`), tipografía escalada. | No | Cumple |
 | **1280 px** (Escritorio) | Contenedor centrado (`max-w-6xl`), espaciados amplios y distribución completa sin deformaciones. | No | Cumple |
+
+
+## MiniReto 8 - Refactor de la landing Rueda Nocturna y comparativa Bootstrap vs Tailwind
+
+### 1. Listas de clases que más se repiten (antes del refactor)
+
+La landing tenía 133 elementos con class y 800 clases en total. Las listas idénticas que más se repetían:
+
+| Elemento | Veces | Clases por lista | Decisión |
+| :--- | :---: | :---: | :--- |
+| Botón principal (ámbar) | 6 | 17 a 22 | @apply -> btn-primario |
+| Botón secundario | 1 | 17 | @apply -> btn-secundario |
+| Botón contorno | 1 | 17 | @apply -> btn-contorno |
+| Fila de datos de la card (div de dl) | 9 | 4 | Se queda con utilidades |
+| dt (etiqueta del dato) | 9 | 2 | Se queda con utilidades |
+| dd (valor del dato) | 6 (+3 con text-right) | 3 | Se queda con utilidades |
+| Círculo numerado de "¿Cómo funciona?" | 4 | 13 | Se queda con utilidades |
+| Card de ruta (article) | 3 | 13 | Mismo marcado del kit, idéntico en las 3 |
+| Enlaces del menú y del pie | 3 + 3 | 9 a 10 | Se quedan con utilidades |
+| Campo de formulario (input) | 2 | 17 | Se queda con utilidades |
+| Etiqueta (label) | 2 | 4 | Se queda con utilidades |
+
+Hallazgo: los tres botones "Inscríbete" de las cards eran copias, y una de las tres tenía un ring-offset distinto (slate-950 en vez de slate-900). Era una diferencia que nadie había decidido y que pasó por copiar y pegar.
+
+### 2. Refactor
+
+**Clases con @apply (3, en @layer components de src/input.css):** btn-primario, btn-secundario y btn-contorno. Solo los botones, porque son un único elemento que se repite en muchos lugares. Las cards, los campos y los demás se quedaron con el marcado del kit, repetido de forma idéntica.
+
+**Resultado en los botones (8 botones):**
+- Antes: 149 clases en total (entre 17 y 22 por botón).
+- Después: 19 clases en total (la clase del botón sola, o con pocos ajustes como w-full o mt-auto; el del encabezado lleva más porque es más pequeño y se ajusta a md:).
+- Si cambio el botón principal, lo cambio una sola vez y se actualizan los 6.
+
+**Orden de las clases:** cada lista (en el HTML y dentro de @apply) quedó ordenada por layout, espaciado, tipografía, color y estados. Dentro de cada grupo va primero la clase base, luego sm:, md:, lg: y al final dark:.
+
+**Otros cambios que hice:**
+- Colores: pasé de slate/amber a los colores de marca (azul-noche, crema, gris-asfalto, verde-ruta, amarillo-farol) y a las fuentes font-titulos y font-texto. Agregué las variantes dark: (antes la landing solo tenía una apariencia oscura fija).
+- Imágenes: las rutas eran /img/..., que en GitHub Pages apunta a la raíz del dominio y da 404. Las cambié a ../img/... y agregué loading="lazy".
+- btn-primario: el hover del kit (hover:bg-amarillo-farol) era el mismo color que el fondo, o sea no tenía efecto. Lo cambié a hover:brightness-110.
+- Foco: pasé de focus:ring con ring-offset (que obliga a poner el color del fondo en cada lugar) a focus-visible:outline con outline-offset, que no depende del fondo.
+- Etiqueta "Nivel: Medio": blanco sobre naranja-pedal da 4.22:1 y no cumple 4.5:1. Usé azul-noche sobre amarillo-farol (11.08:1).
+- Agregué <meta name="color-scheme" content="light dark"> para que los controles nativos sigan el tema.
+
+**Conteo total del HTML:** 800 clases antes y 771 después. Los caracteres dentro de class subieron de 9.499 a 10.169 porque ahora cada elemento con color lleva también su pareja dark:. La lista más larga pasó de 22 a 18 clases (el campo de formulario).
+
+### 3. Tabla de pruebas responsive
+
+Prueba en Chromium con ventana de cada ancho y emulando prefers-color-scheme claro y oscuro.
+
+| Ancho | Menú del encabezado | Rutas | Pasos | Scroll horizontal (claro / oscuro) | Estado |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| 360 px | Oculto (hidden), botón "Inscríbete" a todo el ancho | 1 col | 1 col | No / No | Cumple |
+| 768 px | Visible (md:flex) | 2 col | 2 col | No / No | Cumple |
+| 1024 px | Visible | 3 col | 4 col | No / No | Cumple |
+| 1280 px | Visible, contenido centrado (max-w-6xl) | 3 col | 4 col | No / No | Cumple |
+
+Las tres imágenes de las rutas cargan sin 404 y los 3 botones (principal, secundario y contorno) mantienen sus colores en ambos modos.
+
+### 4. Validación de contraste en modo oscuro
+
+Fórmula WCAG 2.1 (luminancia relativa). Los colores con transparencia se mezclaron sobre el fondo real (azul-noche #14213D, o la card = blanco al 5 % sobre azul-noche). Mínimo: 4.5:1 para texto normal y 3:1 para bordes y foco.
+
+| Par (texto / fondo) | Dónde se usa | Ratio | Resultado |
+| :--- | :--- | :---: | :---: |
+| crema / azul-noche | Texto principal y títulos | 14.63 | Cumple |
+| crema al 80 % / azul-noche | Texto secundario | 9.80 | Cumple |
+| crema al 80 % / card | Texto secundario dentro de las cards | 8.71 | Cumple |
+| amarillo-farol / azul-noche | Precios, pasos, "Nocturna" en el logo | 11.08 | Cumple |
+| amarillo-farol / card | Precio dentro de la card | 9.63 | Cumple |
+| azul-noche / amarillo-farol | btn-primario | 11.08 | Cumple |
+| crema / crema al 10 % | btn-secundario | 11.05 | Cumple |
+| amarillo-farol / azul-noche | btn-contorno | 11.08 | Cumple |
+| blanco / verde-ruta | Etiqueta "Nivel: Fácil" | 6.44 | Cumple |
+| azul-noche / crema | Etiqueta "Nivel: Difícil" | 14.63 | Cumple |
+| crema al 70 % / campo | Placeholder de los campos | 7.04 | Cumple |
+| borde crema al 50 % / azul-noche | Borde de los campos (mínimo 3:1) | 4.66 | Cumple |
+| amarillo-farol / azul-noche | Contorno de foco (mínimo 3:1) | 11.08 | Cumple |
+
+Combinaciones que descarté en modo oscuro: verde-ruta sobre azul-noche (2.48), gris-asfalto sobre azul-noche (2.61) y blanco sobre naranja-pedal (4.22). Por eso en modo oscuro los textos de acento van en amarillo-farol y los secundarios en crema al 80 %.
+
+Modo claro (resumen): azul-noche/crema 14.63, gris-asfalto/crema 5.60, gris-asfalto/blanco 6.11, verde-ruta/crema 5.90, verde-ruta sobre su fondo al 10 % 5.11, azul-noche/amarillo-farol 11.08, borde de campo gris-asfalto/crema 5.60. Todo cumple.
+
+### 5. Mediciones de tamaño
+
+CSS de Tailwind generado con `npx tailwindcss -i ./src/input.css -o ./src/output.css --minify`. Los archivos de Bootstrap son los que carga el sitio v2.0 desde jsDelivr (Bootstrap 5.3.8); verifiqué que su hash SRI coincide con el de index.html.
+
+| Recurso | Sin comprimir | gzip | brotli |
+| :--- | ---: | ---: | ---: |
+| Tailwind output.css (--minify) | 31.035 B (30,3 KiB) | 5.633 B | 4.868 B |
+| Bootstrap bootstrap.min.css | 232.111 B (226,7 KiB) | 30.869 B | 22.970 B |
+| Bootstrap bootstrap.bundle.min.js | 80.496 B (78,6 KiB) | 23.743 B | 21.154 B |
+| styles.css propio del v2.0 | 8.337 B (8,1 KiB) | 2.160 B | 1.835 B |
+| **Total Bootstrap v2.0 (CSS + JS + styles.css)** | **320.944 B (313,4 KiB)** | **56.772 B** | **45.959 B** |
+| **Total Tailwind (solo CSS, sin JS)** | **31.035 B (30,3 KiB)** | **5.633 B** | **4.868 B** |
+
+- Tailwind pesa unas 10 veces menos: 10,3x sin comprimir, 10,1x con gzip y 9,4x con brotli.
+- Sin minificar, el CSS de Tailwind pesaba 38.896 B; con --minify bajó a 31.035 B (20 % menos). El output.css que tenía en el repo (40.154 B) no estaba minificado.
+- Tailwind solo genera las clases que uso, por eso no aparece nada de bg-pink-500 en el archivo. Bootstrap trae todo su catálogo aunque use una parte.
+- Bootstrap Icons (que usa el v2.0 y no la landing) suma otros 85.875 B de CSS y 130.396 B de fuente woff2.
+- Para ponerlo en perspectiva: las 3 imágenes de las rutas pesan 2.452.804 B (2,3 MiB), unas 79 veces el CSS de Tailwind y 7,6 veces todo Bootstrap.
+- Límites de la comparación: la landing es una sola página y el sitio v2.0 son tres; el CSS de Tailwind crece con la cantidad de clases distintas que se usen. Bootstrap se puede aligerar importando solo los módulos de Sass que se usan, pero no lo probé ni lo medí.
+
+### 6. Comparativa Bootstrap vs Tailwind
+
+**Curva de aprendizaje**
+- Bootstrap: escribo `btn btn-primary btn-sm` y ya tengo un botón. Funciona desde un CDN, sin instalar nada. La versión con Bootstrap me tomó 4 h 30 min frente a 7 h con CSS propio.
+- Tailwind: no existe una clase btn; armé cada botón pieza por pieza (de 17 a 22 clases) y tuve que aprender el flujo con npm, input.css y la CLI, además de recordar recompilar para que aparezcan las clases nuevas. A cambio, sé qué hace cada clase. Tiempo con Tailwind: [COMPLETAR: horas que tardé en la landing].
+- Con @apply bajé los 8 botones de 149 a 19 clases.
+
+**Personalización**
+- Bootstrap: para usar mis colores tuve que sobrescribir variables --bs-* y resolví 5 conflictos con mis propios estilos; styles.css quedó en 392 líneas.
+- Tailwind: con @theme definí 6 colores y 2 fuentes, y todas las utilidades (bg-verde-ruta, dark:text-amarillo-farol) salieron de ahí. 0 conflictos y 0 líneas de sobrescritura, porque no hay un diseño base que pelear. Los problemas de contraste los resolví cambiando el color de cada elemento.
+
+**Tamaño final**
+- Tailwind: 31.035 B de CSS y nada de JavaScript (4.868 B con brotli).
+- Bootstrap v2.0: 320.944 B entre CSS, JS y styles.css (45.959 B con brotli).
+- Tailwind es unas 10 veces más liviano, pero en esta landing las imágenes (2,3 MiB) pesan mucho más que cualquiera de los dos CSS.
+
+**Casos de uso**
+- Bootstrap: sitios con componentes interactivos hechos. En el v2.0 uso el navbar con botón de menú, el carrusel de promociones, el modal de políticas, la alerta cerrable y la validación visual del formulario, todo con su JavaScript incluido.
+- Tailwind: páginas con identidad visual propia, como la landing Rueda Nocturna. No trae componentes con JavaScript; un carrusel o un modal tendría que escribirlos yo o sumar una librería.
+
+### 7. Recomendación para Rueda Libre
+
+Recomiendo que la próxima versión de todo el sitio (inicio, tarifas y reservas) siga en Bootstrap 5.3, y que Tailwind se use en landings de campaña independientes como Rueda Nocturna, sin mezclar los dos frameworks en una misma página.
+
+Por qué:
+1. El valor del sitio está en componentes con JavaScript (navbar, carrusel, modal, alerta, validación). Bootstrap los trae listos; con Tailwind tendría que escribirlos.
+2. Cambiar tiene un costo y el cliente no vería una diferencia en lo que hace el sitio: pasar de CSS propio a Bootstrap ya me tomó 4 h 30 min, y estimo que rehacer las tres páginas, el carrusel, el modal y la validación en Tailwind costaría algo similar o más.
+3. La ventaja de peso de Tailwind es real (unas 10 veces), pero son unos 41 KB comprimidos (brotli) frente a imágenes de 2,3 MiB. Antes de cambiar de framework conviene optimizar las imágenes.
+4. Tailwind sí gana en personalización (cero conflictos con @theme), y por eso lo recomiendo para las landings de campaña, que cada vez pueden tener su propia identidad.
+
+Cuándo revisaría esta decisión: si el cliente prioriza la velocidad de carga en celular y acepta pagar el trabajo de escribir los componentes, o si el sitio crece a muchas páginas con diseño propio, migrar a Tailwind tendría más sentido.
