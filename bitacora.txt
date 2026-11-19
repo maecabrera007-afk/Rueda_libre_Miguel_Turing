@@ -475,3 +475,69 @@ Por qué:
 4. Tailwind sí gana en personalización (cero conflictos con @theme), y por eso lo recomiendo para las landings de campaña, que cada vez pueden tener su propia identidad.
 
 Cuándo revisaría esta decisión: si el cliente prioriza la velocidad de carga en celular y acepta pagar el trabajo de escribir los componentes, o si el sitio crece a muchas páginas con diseño propio, migrar a Tailwind tendría más sentido.
+
+## MiniReto - Formulario de inscripción (cronómetro de 40 minutos)
+
+**Tiempo real:** [COMPLETAR: minutos que marcó el cronómetro]
+
+### 1. Control elegido para cada dato
+
+| Dato | Control | Reglas de validación |
+| :--- | :--- | :--- |
+| Nombre completo | input type="text" | required, minlength="3" |
+| Correo | input type="email" | required (el navegador valida el formato) |
+| Celular | input type="tel" con inputmode="numeric" | required, pattern="3[0-9]{9}", maxlength="10", title="10 dígitos, solo números, y debe empezar por 3" |
+| Ruta | select con 3 opciones | required (la opción "Elige una ruta" está disabled y con value vacío) |
+| Día de salida | 3 radios (jueves, viernes, sábado) | required |
+| Acompañantes | input type="number" | required, min="0", max="3", step="1" |
+| Nivel de experiencia | select con 3 opciones | required |
+| Bicicleta propia | 2 radios (sí, no) | required |
+| Condiciones | input type="checkbox" | required |
+
+Por qué: un select o radios cuando las opciones son pocas y cerradas (así no se puede escribir un valor inválido), number para el conteo con min y max, tel para el celular (abre el teclado numérico en el móvil) y checkbox para aceptar.
+
+### 2. Estructura semántica
+
+- Un solo form con 4 fieldset, cada uno con su legend: "Tus datos", "Tu salida", "Tu experiencia" y "Condiciones".
+- Los dos grupos de radios (día y bicicleta) son un fieldset con legend propio dentro del grupo, para que un lector de pantalla anuncie la pregunta junto con cada opción.
+- Cada input y select tiene su label con for/id; los radios y la casilla van envueltos en su label. Revisé con JavaScript que ningún control quedó sin etiqueta.
+- Los textos de ayuda están enlazados con aria-describedby.
+- La sección tiene encabezado h2 y aria-labelledby.
+
+### 3. Estilo
+
+- Campos del kit (borde gris-asfalto, fondo blanco, texto azul-noche) y sus variantes dark:.
+- Una columna en celular; dos columnas desde md (grid grid-cols-1 md:grid-cols-2). El nombre y la ruta ocupan las dos columnas (md:col-span-2).
+- Foco visible con focus-visible:outline; borde naranja-pedal cuando el campo es inválido (user-invalid:), que pasa 3:1 en claro (3,86) y en oscuro (3,79).
+- Radios y casilla con accent-color de la marca. En modo oscuro el borde nativo daba solo 1,8:1 contra el fondo, así que les agregué dark:ring-1 dark:ring-crema/50; ahora el borde da 4,5:1 (3:1 es el mínimo).
+
+### 4. Pruebas
+
+Prueba en Chromium (escritorio 1280 px).
+
+| Prueba | Resultado |
+| :--- | :--- |
+| Formulario vacío | No se envía; el foco se va al nombre y se marcan los 9 datos como pendientes |
+| Nombre "Al" (2 caracteres) | Inválido |
+| Correo "abc" | Inválido |
+| Celular 2001234567 (no empieza por 3) | Inválido |
+| Celular 300123456 (9 dígitos) | Inválido |
+| Celular 30012345678 (11 dígitos) | Inválido |
+| Celular 30012345ab (con letras) | Inválido |
+| Celular 3001234567 | Válido |
+| Acompañantes -1 y 4 | Inválidos |
+| Acompañantes 0, 2 y 3 | Válidos |
+| Formulario con un dato inválido | No se envía |
+| Formulario completo y válido | Se envía (la URL queda con los 9 datos como parámetros) |
+
+**Recorrido solo con teclado (sin mouse):** Tab pasa por nombre, correo, celular, ruta, día, acompañantes, nivel, bicicleta, casilla y botón, en ese orden y con el foco visible. En los select se cambia la opción con las flechas, en los radios con las flechas, en la casilla con Espacio y se envía con Enter en el botón. Se completó y se envió sin tocar el mouse.
+
+**Responsive y tema:** a 360, 768 y 1280 px, en modo claro y oscuro, no hay scroll horizontal; 1 columna a 360 px y 2 columnas a 768 px y 1280 px.
+
+### 5. Pendiente
+
+- El formulario no está conectado a un servidor: al enviarlo solo recarga la página con los datos en la URL (method GET). Para recibir inscripciones de verdad hay que conectarlo a un servicio o a un backend, y pasarlo a POST.
+- El nombre acepta 3 espacios seguidos, porque minlength cuenta espacios.
+- Los mensajes de error son los del navegador y salen en su idioma, no en un estilo propio.
+- No hay mensaje de confirmación después de enviar; el kit ya tiene la alerta de "Inscripción confirmada" para cuando exista el servidor.
+- Falta el vínculo a un texto real de las condiciones de la salida.
